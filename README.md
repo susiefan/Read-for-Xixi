@@ -8,6 +8,23 @@ This public repository is for parents and builders who want to understand, adapt
 
 Shared reading is valuable because it creates a loop between a child, a caregiver, and a story: notice, respond, expand, and respond again. In practice, that loop is difficult to sustain every day.
 
+### Why shared reading matters for language and thinking
+
+The evidence supports shared reading as a useful, developmentally rich routine—especially when it is interactive. The [American Academy of Pediatrics' 2024 policy](https://publications.aap.org/pediatrics/article/154/6/e2024069090/199467/Literacy-Promotion-An-Essential-Component-of) recommends reading aloud and shared reading from infancy because the activity supports language, cognitive, social-emotional, and early-literacy development while strengthening the caregiver–child relationship.
+
+Research findings most relevant to this product include:
+
+- **Expressive and receptive language:** a [2020 meta-analysis of 19 randomized trials](https://eric.ed.gov/?id=EJ1246036), covering 2,594 children ages 1–6, found small-to-moderate improvements in expressive language (`d=0.41`) and receptive language (`d=0.26`). The largest effect was on caregiver book-sharing skill (`d=1.01`), suggesting that improving the adult–child interaction is an important mechanism.
+- **Vocabulary learning:** a [meta-analysis of 38 shared-storybook studies](https://pubmed.ncbi.nlm.nih.gov/29595311/) involving 2,455 children found that children learned words through shared reading and that the way adults interacted around the book helped explain differences in outcomes. Repetition, pointing, explanations, and dialogic exchanges make new words easier to connect to meaning.
+- **Conversational turn-taking:** a [randomized parent-coaching study](https://pubmed.ncbi.nlm.nih.gov/32015127/) found that increasing parentese and back-and-forth turns was associated with gains in infant vocalizations and language. A [30-month follow-up](https://pubmed.ncbi.nlm.nih.gov/36999222/) reported lasting language differences that were partly mediated by conversational turns. The follow-up sample was small, so the result is promising rather than definitive.
+- **Attention and memory:** following a story asks a child to maintain joint attention, hold earlier events in mind, recognize repeated patterns, and connect what is happening now with what happened before. Re-reading the same book can strengthen familiarity with vocabulary, event order, and narrative structure.
+- **Reasoning and narrative cognition:** well-timed questions such as “What might happen next?”, “Why is she sad?”, or “How can they fix it?” give children practice with prediction, cause and effect, sequencing, inference, and perspective-taking. These skills are exercised through the conversation around the story, not merely by hearing more words.
+- **Mental imagery and meaning-making:** an exploratory [fMRI study of preschool children](https://pubmed.ncbi.nlm.nih.gov/25825501/) found that greater home reading exposure was associated with stronger activation in brain regions involved in semantic processing and mental imagery while listening to stories. This was correlational and does not prove that reading alone caused the neural differences, but it supports the idea that children actively construct meaning and imagined scenes from narrative language.
+
+The size of the overall benefit should not be exaggerated. A [2019 meta-analysis](https://www.sciencedirect.com/science/article/pii/S1747938X18305116) estimated a small average language effect (`g=0.194`) and little advantage over active comparison programs. The defensible conclusion is that enjoyable, repeated, responsive reading creates valuable opportunities for language and thinking; it is not a guaranteed way to raise IQ and it does not replace responsive everyday conversation, education, or clinical support when needed.
+
+This evidence directly shapes Read-for-Xixi. Mimi should create joint attention, leave room for turns, repeat and expand useful language, and occasionally invite prediction, explanation, counting, comparison, emotion talk, or story sequencing. She should not continuously narrate, quiz the child on every page, or treat silence as failure.
+
 Parents may be tired after work, short on preparation time, unsure what to ask, or reading with a child who quickly loses interest. A conventional audiobook reduces effort but usually cannot notice the child's contribution or change what happens next. Individual tutoring can be responsive, but qualified help is expensive, difficult to schedule, and not available whenever a family opens a book.
 
 Read-for-Xixi explores a middle path:
@@ -107,6 +124,81 @@ flowchart LR
     G --> H["Physical-book interaction<br/>child + caregiver + story"]
     H -->|"lightweight response signal"| D
 ```
+
+### Where AI is used
+
+Read-for-Xixi uses AI for the parts of shared reading that benefit from perception, language generation, and natural voice. It does **not** give an unconstrained AI agent control of the session. A deterministic session engine controls when Mimi may speak, listen, adapt, or stop; AI services operate inside those boundaries.
+
+The public repository contains the application shell and deterministic state model. The private prototype has explored page analysis, page-specific Chinese interaction generation, and natural Mandarin voice rendering. Production speech understanding and automatic child-response interpretation remain future work and would require additional consent and evaluation.
+
+| AI capability | Input | Output | Current status |
+| --- | --- | --- | --- |
+| Multimodal book understanding | Private page images and optional transcript | Page order, visible entities, expressions, actions, story beats, and interaction opportunities | Explored in the private preparation workflow; no book inputs are public |
+| Grounded dialogue generation | Current page map, previous turns, interaction rules, and ability observations | Short Chinese narration, one invitation, and up to two or three relevant expansions | Explored with human review; production scripts remain private |
+| Response interpretation | Future child speech signal, parent input, and conversational context | A small semantic observation such as naming, predicting, counting, gesturing, or no clear response | Parent-confirmed signal in the current prototype; automatic interpretation is future work |
+| Adaptive turn selection | Language, cognition, engagement, support needed, page state, and expansion count | Expand, simplify, change modality, continue the story, or stop prompting | Deterministic policy shell implemented; richer scoring is a production direction |
+| Mandarin speech generation | Approved Chinese script plus a selected default or consented reference voice | Natural page-aligned narration with timing metadata | Natural Mandarin voice was explored privately with CosyVoice; generated audio is excluded |
+| Companion expression control | Session state and future speech timing or viseme cues | Mimi's listening, speaking, smiling, and reaction states | Public prototype uses state-driven React/SVG animation; richer lip sync is future work |
+
+#### 1. Multimodal page understanding
+
+A vision-language preparation step examines each supplied spread together with OCR or a parent-provided transcript. The objective is not to rewrite the book. It creates structured, page-grounded metadata: who is present, what is visibly happening, how a character may feel, which objects can be counted or compared, and how this page moves the story forward.
+
+Visual and textual evidence are kept together because each has different failure modes. OCR may miss stylized type, a transcript may omit illustration-only details, and a vision model may misidentify an object. The preparation workflow should preserve uncertainty and allow caregiver review rather than treating every model observation as fact.
+
+#### 2. Page-grounded dialogue generation
+
+The language model receives only the current page map, limited prior context, the child's approved ability observations, and explicit dialogue rules. This is a constrained grounding pattern similar to retrieval-augmented generation: the model works from the family's prepared page record instead of inventing a generic story from memory.
+
+Generation constraints include:
+
+- speak in natural, age-appropriate Chinese even when the physical book is in English;
+- keep English personal names in their original form;
+- ask one clear question at a time;
+- make the first follow-up connect meaningfully to the likely child response;
+- permit no more than two or three expansions before returning to the story;
+- avoid repeated reassurance, testing language, correction, performance requests, or interface narration;
+- never claim to see an illustration detail that is absent from the page map.
+
+Page scripts should be generated during book preparation and reviewed before use. The live session can select or lightly personalize approved alternatives without allowing open-ended story generation around a young child.
+
+#### 3. Child-response understanding
+
+Toddler speech is harder to recognize than adult speech: pronunciation is still developing, sentences may mix languages, and gestures often carry part of the meaning. For that reason, the MVP does not need to depend on always-on automatic speech recognition.
+
+The current interaction can use a low-effort caregiver signal that the child responded. The session then chooses a prepared expansion that makes sense for likely answers. A future system could combine short-lived speech recognition, language identification, confidence scoring, and optional gesture or attention signals, but it should fall back gracefully when confidence is low. A low-confidence result must not be interpreted as low ability.
+
+#### 4. Hybrid adaptation: rules around models
+
+Adaptation is deliberately hybrid:
+
+- a typed state machine controls pacing and guarantees listening space;
+- hard rules cap the number and length of expansions;
+- a small policy combines language, cognition, engagement, and support observations;
+- a language model realizes the selected strategy as a natural line grounded in the page;
+- parent controls can override the system at any time.
+
+This separation makes behavior easier to test than a single autonomous prompt. It also lets the product improve one layer—speech recognition, response classification, dialogue quality, or voice—without changing the entire child-facing experience.
+
+#### 5. Natural Mandarin voice and parent-voice pathway
+
+The private prototype explored CosyVoice for more natural Mandarin narration and a consent-based parent-voice option. The intended setup uses a short, clearly disclosed recording task so the caregiver knows exactly what is captured. Voice assets must be encrypted, limited to the family's reading experience, and deletable by the caregiver.
+
+The voice model produces audio, but the session engine remains responsible for pacing. Speech timing can also drive mouth movement and facial reactions; the animation itself is not generative AI. The public repository intentionally contains neither model weights nor reference recordings nor generated audio.
+
+#### 6. Evaluation and AI safety
+
+AI quality has to be evaluated at the interaction level, not only by whether a sentence sounds fluent. Important test sets and session reviews include:
+
+- **grounding:** did Mimi mention only people, objects, and events supported by the supplied page?
+- **response relevance:** did the follow-up make sense for what the child probably communicated?
+- **developmental fit:** was the line short enough, clear enough, and only slightly more complex than the child's demonstrated response?
+- **conversation balance:** did Mimi pause and leave room, or dominate the interaction?
+- **parent burden:** how many times did the caregiver need to operate the device?
+- **uncertainty behavior:** did the system simplify or defer when speech or page understanding was unclear?
+- **privacy:** were raw inputs retained only when necessary and with explicit consent?
+
+The most important model comparison is not “Which output sounds smartest?” It is “Which system produces a safer, more natural, more enjoyable parent–child interaction around the real book?”
 
 ### System responsibilities
 
