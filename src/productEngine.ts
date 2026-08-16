@@ -19,8 +19,8 @@ export function transitionSession(stage: SessionStage, event: SessionEvent): Ses
 }
 
 export const privateContentBoundary = {
-  pageMedia: "runtime-only",
-  narration: "private content service",
-  voiceAssets: "private object storage",
+  pageMedia: "confidential runtime storage",
+  narration: "reviewed confidential page map",
+  voiceAssets: "consent-gated object storage",
   childProfile: "consent-gated local data",
 } as const;

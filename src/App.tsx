@@ -17,9 +17,27 @@ const nextEvent: Record<SessionStage, SessionEvent> = {
 
 const capabilities = [
   ["Physical-book first", "Keeps the printed page between the parent and child instead of replacing it with a digital book."],
-  ["Page-aware guidance", "Maps narration and developmental opportunities to the family’s current physical spread."],
-  ["Adaptive pacing", "Separates language complexity, reasoning, engagement, and conversational turn-taking signals."],
-  ["Parent voice pathway", "Supports consent-based voice setup while preserving a consistent default narration experience."],
+  ["Multimodal preparation", "Uses page images and optional transcripts to ground narration in the real text and illustration."],
+  ["Adaptive conversation", "Separates language complexity, reasoning, engagement, and conversational turn-taking signals."],
+  ["Natural family voice", "Uses a locked Mandarin Mimi voice and defines a consent-based parent-voice pathway."],
+];
+
+const experienceSteps = [
+  ["Prepare", "A caregiver supplies ordered physical-book spreads and, when available, a transcript for correction."],
+  ["Review", "Multimodal analysis creates a page map; the caregiver reviews text, visual evidence, and page order."],
+  ["Read", "Mimi narrates the current spread in Mandarin while the printed book remains the primary visual surface."],
+  ["Listen", "The child can answer with speech, gesture, pointing, expression, pretend action, or quiet attention."],
+  ["Adapt", "Rules choose whether to expand language, deepen reasoning, acknowledge action, simplify, or continue."],
+  ["Remember", "Parent-approved observations improve later turns without assigning a cognitive age or diagnosis."],
+];
+
+const aiLayers = [
+  ["Vision + OCR", "Builds a reviewable page map from confidential book images and optional transcript evidence.", "ADAPTER INCLUDED"],
+  ["Grounded dialogue", "Generates natural Chinese turns from only the current page map, interaction rules, and profile.", "TYPED BOUNDARY"],
+  ["Response understanding", "Uses parent confirmation today; future toddler-speech interpretation must preserve uncertainty.", "MVP + FUTURE"],
+  ["Adaptation policy", "A deterministic controller selects the teaching move and caps Mimi at two expansions per page.", "IMPLEMENTED"],
+  ["CosyVoice 3", "Renders the locked Mandarin Mimi voice and supports a consented parent-voice adapter.", "IMPLEMENTED PATH"],
+  ["Live 2D control", "Maps session and speech timing to listening, speaking, smiling, and reaction states.", "IMPLEMENTED"],
 ];
 
 function Mimi({ stage }: { stage: SessionStage }) {
@@ -69,15 +87,15 @@ export default function App() {
     <main>
       <header className="topbar">
         <a className="brand" href="#top" aria-label="Read-for-Xixi home"><span>S</span>Read-for-Xixi</a>
-        <nav><a href="#product">Product</a><a href="#architecture">Architecture</a><a href="#privacy">Privacy</a></nav>
+        <nav><a href="#product">Product</a><a href="#experience">Experience</a><a href="#ai">AI</a><a href="#architecture">Architecture</a><a href="#privacy">Confidential content</a></nav>
       </header>
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">PRODUCT + PROTOTYPE</p>
+          <p className="eyebrow">PHYSICAL BOOK + ADAPTIVE AI</p>
           <h1>A reading companion that keeps the <em>real book</em> in the middle.</h1>
           <p className="lede">Read-for-Xixi helps caregivers sustain responsive, developmentally rich shared reading with a low-screen animated companion.</p>
-          <div className="hero-actions"><a className="primary" href="#product">Explore the product</a><span>Privacy-safe public build</span></div>
+          <div className="hero-actions"><a className="primary" href="#experience">Follow the experience</a><span>Full product + AI architecture</span></div>
         </div>
         <div className="demo-card">
           <Mimi stage={stage} />
@@ -93,13 +111,23 @@ export default function App() {
         <div className="capability-grid">{capabilities.map(([title, body], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{body}</p></article>)}</div>
       </section>
 
+      <section className="section experience" id="experience">
+        <div className="section-head"><p className="eyebrow">END-TO-END EXPERIENCE</p><h2>From a physical book to a responsive family conversation.</h2></div>
+        <div className="experience-grid">{experienceSteps.map(([title, body], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{body}</p></div></article>)}</div>
+      </section>
+
+      <section className="ai-system" id="ai">
+        <div className="section-head"><p className="eyebrow">AI SYSTEM</p><h2>Generative intelligence inside deterministic child-safety boundaries.</h2><p>AI perceives pages, realizes grounded dialogue, and renders natural voice. Typed rules still control when Mimi speaks, how far she adapts, and when she stops.</p></div>
+        <div className="ai-grid">{aiLayers.map(([title, body, status]) => <article key={title}><small>{status}</small><h3>{title}</h3><p>{body}</p></article>)}</div>
+      </section>
+
       <section className="architecture" id="architecture">
-        <div className="section-head"><p className="eyebrow">SYSTEM ARCHITECTURE</p><h2>Private content in. Adaptive session out.</h2></div>
-        <div className="flow"><div><b>01</b><strong>Book preparation</strong><p>Page order and visual context</p></div><i>→</i><div><b>02</b><strong>Page map</strong><p>Plot, concepts, and pacing</p></div><i>→</i><div><b>03</b><strong>Session engine</strong><p>State and adaptation logic</p></div><i>→</i><div><b>04</b><strong>Companion</strong><p>Voice and visual reactions</p></div></div>
+        <div className="section-head"><p className="eyebrow">SYSTEM ARCHITECTURE</p><h2>Confidential content in. Grounded adaptive session out.</h2></div>
+        <div className="flow"><div><b>01</b><strong>Book input</strong><p>Images, transcript, and review</p></div><i>→</i><div><b>02</b><strong>Page map</strong><p>Evidence, plot, and opportunities</p></div><i>→</i><div><b>03</b><strong>AI services</strong><p>Grounded language and voice</p></div><i>→</i><div><b>04</b><strong>Session engine</strong><p>State, policy, and expansion caps</p></div><i>→</i><div><b>05</b><strong>Mimi</strong><p>Voice, timing, and reactions</p></div></div>
       </section>
 
       <section className="privacy" id="privacy">
-        <div><p className="eyebrow">PRIVACY BY DESIGN</p><h2>The public shell contains no family or book content.</h2><p>This repository exposes product and engineering decisions while keeping real-world inputs and generated assets outside the public codebase.</p></div>
+        <div><p className="eyebrow">CONFIDENTIAL BY DESIGN</p><h2>The architecture is complete. Family content stays protected.</h2><p>Typed adapters show where real books, page maps, parent voices, child profiles, generated audio, and research sessions connect. Protected folders contain only synthetic manifests and handling instructions.</p></div>
         <dl>{boundaryItems.map(([key, value]) => <div key={key}><dt>{key.replace(/([A-Z])/g, " $1")}</dt><dd>{value}</dd></div>)}</dl>
       </section>
 
