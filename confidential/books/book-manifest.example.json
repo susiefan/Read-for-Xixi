@@ -1,0 +1,13 @@
+{
+  "bookId": "synthetic-demo-book",
+  "title": "Placeholder family book",
+  "sourceLanguage": "en-US",
+  "interactionLanguage": "zh-CN",
+  "pageImages": [
+    "private://books/synthetic-demo-book/page-000",
+    "private://books/synthetic-demo-book/page-001"
+  ],
+  "transcriptRef": "private://books/synthetic-demo-book/transcript",
+  "pageMapRef": "private://books/synthetic-demo-book/page-map",
+  "reviewStatus": "needs-review"
+}
