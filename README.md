@@ -1,8 +1,8 @@
-# Read-for-Xixi — privacy-safe portfolio build
+# Read-for-Xixi — public family build
 
 Read-for-Xixi is a physical-book-first reading companion for families with young children. A responsive animated character supports shared reading while the real book remains the center of attention.
 
-This public repository is a recruiter-facing technical snapshot. It demonstrates the product architecture, responsive interface, animated companion, and adaptive session state machine without publishing private book content, family media, generated voices, transcripts, or production interaction scripts.
+This public repository is for parents who want to understand, adapt, or build a similar reading companion for their own child. It demonstrates the product architecture, responsive interface, animated companion, and adaptive session state machine without publishing private book content, family media, generated voices, transcripts, or production interaction scripts.
 
 ## What this demonstrates
 
