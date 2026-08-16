@@ -1,0 +1,10 @@
+{
+  "profileId": "synthetic-child-profile",
+  "preferredLanguages": ["zh-CN", "en-US"],
+  "strongestResponseForm": "sentence",
+  "demonstratedReasoning": ["sequence", "cause", "emotion"],
+  "typicalTurnDepth": 2,
+  "supportNeeded": "open-invitation",
+  "updatedAt": "2026-01-01T00:00:00.000Z",
+  "notice": "Synthetic schema example. Not a real child profile."
+}
