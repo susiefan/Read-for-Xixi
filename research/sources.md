@@ -12,6 +12,7 @@
 | [2024 screen-context review](https://pubmed.ncbi.nlm.nih.gov/39102255/) | Systematic review/meta-analysis | Co-use, background TV, caregiver screen context | High for association; observational base |
 | [Parent coaching RCT](https://pubmed.ncbi.nlm.nih.gov/32015127/) | Randomized trial | Parentese and conversational turns | Moderate-high; modest sample |
 | [30-month follow-up](https://pubmed.ncbi.nlm.nih.gov/36999222/) | Longitudinal RCT follow-up | Durable language differences and mediation by turns | Moderate-high; follow-up sample 59 |
+| [Hutton et al. 2015](https://pubmed.ncbi.nlm.nih.gov/25825501/) | Exploratory fMRI study | Home reading exposure and activation supporting semantic processing and mental imagery during story listening | Moderate; small correlational sample, not causal evidence |
 | [Responsive parenting meta-analysis](https://publications.aap.org/pediatrics/article-pdf/144/4/e20183556/1078264/peds_20183556.pdf) | Meta-analysis | Responsive parenting associated with language | High for association; observational studies |
 | [Shared-reading barriers meta-synthesis](https://pmc.ncbi.nlm.nih.gov/articles/PMC12326312/) | Systematic qualitative meta-synthesis | Time, fatigue, confidence, access, enjoyment barriers | Moderate-high; only nine included studies |
 | [Baby-sign systematic review](https://journals.sagepub.com/doi/10.1177/0142723714562864) | Systematic review | No robust lasting language benefit; no detected harm | High relative to sparse evidence; search ended 2013 |
