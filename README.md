@@ -1,8 +1,8 @@
-# Read-for-Xixi — public family build
+# Read-for-Xixi
 
 Read-for-Xixi is a physical-book-first reading companion for families with young children. A responsive animated cat, Mimi, helps a parent sustain an engaging conversation around a real book without turning reading time into passive screen time.
 
-This public repository is for parents and builders who want to understand, adapt, or create a similar experience for their own child. It shares the product thinking, public application shell, adaptive session model, and research base while keeping real books, family media, voices, and child information private.
+This repository describes and implements the complete Read-for-Xixi product architecture: the physical-book experience, Live 2D companion, page-preparation pipeline, adaptive dialogue system, CosyVoice narration pathway, interaction profile, and privacy boundaries. Copyrighted books and family data are represented by protected placeholder folders and synthetic manifests.
 
 ## The product opportunity
 
@@ -20,8 +20,6 @@ Research findings most relevant to this product include:
 - **Attention and memory:** following a story asks a child to maintain joint attention, hold earlier events in mind, recognize repeated patterns, and connect what is happening now with what happened before. Re-reading the same book can strengthen familiarity with vocabulary, event order, and narrative structure.
 - **Reasoning and narrative cognition:** well-timed questions such as “What might happen next?”, “Why is she sad?”, or “How can they fix it?” give children practice with prediction, cause and effect, sequencing, inference, and perspective-taking. These skills are exercised through the conversation around the story, not merely by hearing more words.
 - **Mental imagery and meaning-making:** an exploratory [fMRI study of preschool children](https://pubmed.ncbi.nlm.nih.gov/25825501/) found that greater home reading exposure was associated with stronger activation in brain regions involved in semantic processing and mental imagery while listening to stories. This was correlational and does not prove that reading alone caused the neural differences, but it supports the idea that children actively construct meaning and imagined scenes from narrative language.
-
-The size of the overall benefit should not be exaggerated. A [2019 meta-analysis](https://www.sciencedirect.com/science/article/pii/S1747938X18305116) estimated a small average language effect (`g=0.194`) and little advantage over active comparison programs. The defensible conclusion is that enjoyable, repeated, responsive reading creates valuable opportunities for language and thinking; it is not a guaranteed way to raise IQ and it does not replace responsive everyday conversation, education, or clinical support when needed.
 
 This evidence directly shapes Read-for-Xixi. Mimi should create joint attention, leave room for turns, repeat and expand useful language, and occasionally invite prediction, explanation, counting, comparison, emotion talk, or story sequencing. She should not continuously narrate, quiz the child on every page, or treat silence as failure.
 
@@ -54,7 +52,7 @@ Useful product signals include:
 
 ### 1. Prepare a physical book
 
-The parent privately provides clear page images, a transcript, or both. Images preserve visual context—characters, objects, expressions, action, counting opportunities, and page order—while a transcript improves textual accuracy. When possible, the two inputs complement each other.
+The parent provides clear page images, a transcript, or both through a confidential ingestion flow. Images preserve visual context—characters, objects, expressions, action, counting opportunities, and page order—while a transcript improves textual accuracy. When possible, the two inputs complement each other.
 
 The preparation pipeline turns the book into a page map containing:
 
@@ -62,16 +60,16 @@ The preparation pipeline turns the book into a page map containing:
 - important visible details grounded in the actual illustration;
 - a short narration or bridge;
 - one simple invitation to notice, predict, explain, count, compare, or pretend;
-- up to two or three possible expansions if the child remains engaged;
+- up to two possible expansions if the child remains engaged;
 - safe exit points that let the story continue naturally.
 
-Book pages and production interaction scripts are private and are not included here.
+Book pages and page-specific production scripts plug into the typed architecture through the protected [`confidential/books/`](confidential/books/) directory. The repository contains schemas and synthetic placeholders, not copyrighted book content.
 
 ### 2. Choose the reading voice
 
-A caregiver can use a natural default voice or, with explicit consent, configure a parent-voice pathway. The setup can also capture the child's name separately so it can be used naturally without embedding family information in public content.
+A caregiver can use a natural default voice or, with explicit consent, configure a parent-voice pathway. The setup can also capture the child's name separately so it can be used naturally without embedding family information in application source.
 
-Voice cloning requires clear consent, secure storage, a deletion path, and protection against use outside the family's reading sessions. The public build contains no recordings or generated voice assets.
+Voice cloning requires clear consent, secure storage, a deletion path, and protection against use outside the family's reading sessions. Reference recordings and generated voice assets belong in the protected confidential-content layer.
 
 ### 3. Start reading together
 
@@ -92,7 +90,7 @@ When the child contributes, the next line should connect to the likely meaning o
 - add a brief, child-relevant fact;
 - invite a physical or pretend action connected to the page.
 
-If engagement is strong, the exchange can continue for up to two or three expansions. If attention drops, the system shortens the next turn and returns to the story. Silence is not treated as failure, and the parent is not asked to repeatedly test, correct, or make the child perform.
+If engagement is strong, the exchange can continue for up to two expansions. If attention drops, the system shortens the next turn and returns to the story. Silence is not treated as failure, and the parent is not asked to repeatedly test, correct, or make the child perform.
 
 ### 5. Adapt over time
 
@@ -111,34 +109,34 @@ A session ends with a natural story closing or a small related activity—not a 
 
 ## Technical architecture
 
-The intended production system separates private family content from the reusable application and session engine.
+The system separates confidential family and book content from reusable product logic.
 
 ```mermaid
 flowchart LR
-    A["Private book input<br/>page images + transcript"] --> B["Book preparation<br/>OCR + visual analysis + page ordering"]
-    B --> C["Private page map<br/>story beats + grounded opportunities"]
+    A["Confidential book input<br/>page images + transcript"] --> B["Book preparation<br/>OCR + visual-language analysis + page ordering"]
+    B --> C["Reviewed page map<br/>story beats + grounded opportunities"]
     C --> D["Session orchestrator<br/>narrate → listen → adapt"]
     E["Consent-gated child profile<br/>ability + engagement observations"] <--> D
     F["Voice service<br/>default or parent-approved voice"] --> D
-    D --> G["Public app shell<br/>React UI + Live 2D Mimi"]
+    D --> G["Reading client<br/>React UI + Live 2D Mimi"]
     G --> H["Physical-book interaction<br/>child + caregiver + story"]
     H -->|"lightweight response signal"| D
 ```
 
 ### Where AI is used
 
-Read-for-Xixi uses AI for the parts of shared reading that benefit from perception, language generation, and natural voice. It does **not** give an unconstrained AI agent control of the session. A deterministic session engine controls when Mimi may speak, listen, adapt, or stop; AI services operate inside those boundaries.
+Read-for-Xixi uses AI for the parts of shared reading that benefit from perception, language generation, response interpretation, and natural voice. It does **not** give an unconstrained AI agent control of the session. A deterministic session engine controls when Mimi may speak, listen, adapt, or stop; AI services operate inside those boundaries.
 
-The public repository contains the application shell and deterministic state model. The private prototype has explored page analysis, page-specific Chinese interaction generation, and natural Mandarin voice rendering. Production speech understanding and automatic child-response interpretation remain future work and would require additional consent and evaluation.
+The current prototype implements the physical-book reading client, page-synchronized interaction branches, parent-confirmed response loop, Live 2D Mimi, and locked natural Mandarin audio rendered with CosyVoice 3. This repository also includes typed boundaries for multimodal book preparation, grounded dialogue generation, response interpretation, adaptive policy, session orchestration, and the consented parent-voice pathway. Automatic toddler-speech interpretation is still a future capability and is not represented as complete.
 
 | AI capability | Input | Output | Current status |
 | --- | --- | --- | --- |
-| Multimodal book understanding | Private page images and optional transcript | Page order, visible entities, expressions, actions, story beats, and interaction opportunities | Explored in the private preparation workflow; no book inputs are public |
-| Grounded dialogue generation | Current page map, previous turns, interaction rules, and ability observations | Short Chinese narration, one invitation, and up to two or three relevant expansions | Explored with human review; production scripts remain private |
+| Multimodal book understanding | Confidential page images and optional transcript | Page order, visible entities, expressions, actions, story beats, and interaction opportunities | Page analysis workflow explored; typed adapter and review boundary included |
+| Grounded dialogue generation | Current page map, previous turns, interaction rules, and ability observations | Short Chinese narration, one invitation, and up to two relevant expansions | Page-specific scripts prepared with human review; typed grounded-generation boundary included |
 | Response interpretation | Future child speech signal, parent input, and conversational context | A small semantic observation such as naming, predicting, counting, gesturing, or no clear response | Parent-confirmed signal in the current prototype; automatic interpretation is future work |
 | Adaptive turn selection | Language, cognition, engagement, support needed, page state, and expansion count | Expand, simplify, change modality, continue the story, or stop prompting | Deterministic policy shell implemented; richer scoring is a production direction |
-| Mandarin speech generation | Approved Chinese script plus a selected default or consented reference voice | Natural page-aligned narration with timing metadata | Natural Mandarin voice was explored privately with CosyVoice; generated audio is excluded |
-| Companion expression control | Session state and future speech timing or viseme cues | Mimi's listening, speaking, smiling, and reaction states | Public prototype uses state-driven React/SVG animation; richer lip sync is future work |
+| Mandarin speech generation | Approved Chinese script plus a selected default or consented reference voice | Natural page-aligned narration with timing metadata | Locked CosyVoice 3 Mandarin voice implemented; adapter included; confidential audio excluded |
+| Companion expression control | Session state and future speech timing or viseme cues | Mimi's listening, speaking, smiling, and reaction states | State-driven React/SVG Live 2D behavior implemented; richer lip sync is future work |
 
 #### 1. Multimodal page understanding
 
@@ -156,7 +154,7 @@ Generation constraints include:
 - keep English personal names in their original form;
 - ask one clear question at a time;
 - make the first follow-up connect meaningfully to the likely child response;
-- permit no more than two or three expansions before returning to the story;
+- permit no more than two expansions before returning to the story;
 - avoid repeated reassurance, testing language, correction, performance requests, or interface narration;
 - never claim to see an illustration detail that is absent from the page map.
 
@@ -182,9 +180,9 @@ This separation makes behavior easier to test than a single autonomous prompt. I
 
 #### 5. Natural Mandarin voice and parent-voice pathway
 
-The private prototype explored CosyVoice for more natural Mandarin narration and a consent-based parent-voice option. The intended setup uses a short, clearly disclosed recording task so the caregiver knows exactly what is captured. Voice assets must be encrypted, limited to the family's reading experience, and deletable by the caregiver.
+The prototype uses CosyVoice 3 for natural Mandarin narration and defines a consent-based parent-voice pathway. The intended setup uses a short, clearly disclosed recording task so the caregiver knows exactly what is captured. Voice assets must be encrypted, limited to the family's reading experience, and deletable by the caregiver.
 
-The voice model produces audio, but the session engine remains responsible for pacing. Speech timing can also drive mouth movement and facial reactions; the animation itself is not generative AI. The public repository intentionally contains neither model weights nor reference recordings nor generated audio.
+The voice model produces audio, but the session engine remains responsible for pacing. Speech timing can also drive mouth movement and facial reactions; the animation itself is not generative AI. Model weights, reference recordings, consent records, and generated audio stay in the confidential runtime layer.
 
 #### 6. Evaluation and AI safety
 
@@ -204,17 +202,17 @@ The most important model comparison is not “Which output sounds smartest?” I
 
 | Layer | Responsibility | Privacy boundary |
 | --- | --- | --- |
-| Book preparation | OCR, visual grounding, spread order, story structure, and developmental opportunities | Processes private book inputs; outputs are not committed publicly |
-| Page map | Stores page-aligned narration, prompts, expansions, and pacing rules | Private content service |
+| Book preparation | OCR, visual grounding, spread order, story structure, and developmental opportunities | Processes confidential book inputs; adapters and types live in `src/ai/` |
+| Page map | Stores page-aligned narration, prompts, expansions, and pacing rules | Confidential content layer represented by placeholders |
 | Session engine | Controls narration, listening space, response handling, adaptation, and reset behavior | Reusable logic; contains no real book text |
 | Response interpretation | Converts a parent signal or future speech/gesture signal into a small set of interaction observations | Prefer ephemeral processing and derived observations over raw recordings |
 | Adaptation policy | Chooses whether to expand, simplify, change modality, or continue the story | Uses ability dimensions separately; avoids diagnosis |
-| Voice pathway | Renders a natural default voice or a consent-based parent voice | Voice assets stay in private storage with deletion controls |
-| Companion client | Presents Mimi's voice, facial reactions, timing, and minimal controls | Public React/SVG shell contains no family content |
+| Voice pathway | Renders a natural default voice or a consent-based parent voice | Voice assets stay in confidential storage with deletion controls |
+| Companion client | Presents Mimi's voice, facial reactions, timing, and minimal controls | React/SVG client receives opaque content and audio references |
 
 ### Session state machine
 
-The public prototype includes a deterministic state machine with four stages:
+The prototype includes a deterministic state machine with four stages:
 
 ```text
 READY → NARRATING → LISTENING → ADAPTING
@@ -227,37 +225,46 @@ READY → NARRATING → LISTENING → ADAPTING
 - `LISTENING`: the system deliberately leaves room for the child and caregiver.
 - `ADAPTING`: the next turn changes based on the observed response and engagement.
 
-This explicit model makes pacing testable and prevents the companion from continuously talking over the family. The public implementation accepts a simple response event; a production version can connect that event to parent controls or carefully consented multimodal interpretation.
+This explicit model makes pacing testable and prevents the companion from continuously talking over the family. The MVP accepts a parent-confirmed response event; a future version can connect the same event boundary to carefully consented multimodal interpretation.
 
-### Public repository structure
+### Repository architecture
 
 ```text
 Read-for-Xixi/
 ├── src/
-│   ├── App.tsx            # Responsive product shell and animated Mimi
-│   ├── productEngine.ts   # Typed session states, events, and privacy boundary
+│   ├── ai/                # Multimodal preparation, grounded dialogue, response interpretation
+│   ├── adaptation/        # Deterministic policy around generated language
+│   ├── domain/            # Book, child-response, dialogue, and profile types
+│   ├── session/           # Orchestration across observation, policy, and generation
+│   ├── voice/             # CosyVoice 3 and consented parent-voice adapter boundary
+│   ├── App.tsx            # Responsive reading client and animated Mimi
+│   ├── productEngine.ts   # Reading-session state machine
 │   ├── main.tsx           # React entry point
 │   └── styles.css         # Responsive visual system and animation
+├── confidential/          # Protected placeholders and synthetic manifests
 ├── research/              # Curated evidence, product implications, and sources
 ├── index.html
 ├── package.json
 └── vite.config.ts
 ```
 
-## What the public prototype demonstrates
+## Current product status
 
-- a physical-book-first, low-screen product model;
-- a responsive animated Live 2D companion built with React and SVG;
-- a deterministic, inspectable reading-session state machine;
-- clear separation between reusable code and private content;
-- responsive and accessible interface foundations;
-- a path from page preparation to adaptive dialogue and voice rendering.
+- two prepared physical-book experiences with page-synchronized Mandarin narration and two response expansions per spread;
+- exactly three parent controls during reading: replay, child responded, and next physical page;
+- a responsive animated Live 2D Mimi with speaking, listening, mood, and reaction states;
+- a locked expressive Mandarin Mimi voice rendered with CosyVoice 3;
+- a 60-second caregiver voice-sample flow and separate child-name recording flow for the future parent-voice pathway;
+- a deterministic, inspectable reading-session state machine and adaptive policy;
+- typed multimodal preparation, grounded dialogue, response interpretation, CosyVoice, and orchestration boundaries;
+- clear separation between reusable code and confidential book or family content;
+- responsive desktop and mobile interface foundations.
 
-It does not contain production speech recognition, voice cloning, private page maps, real child profiles, or a clinical language model. Those capabilities require additional consent, safety, evaluation, and infrastructure work.
+The repository does not contain real book pages, production scripts, generated audio, voice references, family recordings, or real child profiles. Those assets connect through the documented confidential-content layer. Automatic toddler-speech interpretation and persistent production voice cloning remain future work; the product does not claim to provide clinical assessment.
 
 ## Privacy and safety principles
 
-- Do not commit real book pages, transcripts, recordings, generated voices, or child profiles to the public repository.
+- Do not commit real book pages, transcripts, recordings, generated voices, or child profiles to source control.
 - Do not store raw child audio by default when a short-lived signal or parent input is sufficient.
 - Require explicit caregiver consent and a clear deletion path for any voice customization.
 - Keep generated prompts grounded in the supplied page; do not invent visual details.
@@ -276,4 +283,4 @@ npm run dev
 
 The [`research/`](research/) folder contains the evidence base that informed the product direction: shared reading and language development, caregiver barriers, adaptive interaction design, familiar voices, avatar feasibility, product landscape, and source references.
 
-Raw transcripts, book-specific page maps, user-session records, and family-specific content are excluded from this public version.
+Raw transcripts, book-specific page maps, user-session records, and family-specific content are represented by protected folders and synthetic placeholders.

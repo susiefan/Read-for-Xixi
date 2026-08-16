@@ -1,4 +1,20 @@
 node_modules
 dist
+*.tsbuildinfo
 .DS_Store
 *.local
+
+# Confidential family and copyrighted content. Keep only documentation and
+# synthetic templates under version control.
+confidential/books/**
+!confidential/books/README.md
+!confidential/books/book-manifest.example.json
+confidential/voices/**
+!confidential/voices/README.md
+confidential/child-profiles/**
+!confidential/child-profiles/README.md
+!confidential/child-profiles/interaction-profile.example.json
+confidential/generated-audio/**
+!confidential/generated-audio/README.md
+confidential/session-recordings/**
+!confidential/session-recordings/README.md
