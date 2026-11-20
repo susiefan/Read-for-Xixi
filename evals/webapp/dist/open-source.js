@@ -15,14 +15,14 @@ function render() {
   const data = snapshot;
   document.getElementById("goal").textContent = data.goal;
   document.getElementById("updated").textContent = `更新于 ${localTime(data.updatedAt)}`;
-  const tasks = data.tasks.filter(task => task.release === "first");
+  const tasks = data.tasks.filter(task => task.release !== "later");
   const complete = tasks.filter(task => task.status === "done").length;
   document.getElementById("done").textContent = complete;
   document.getElementById("active").textContent = tasks.filter(task => task.status === "active").length;
   document.getElementById("remaining").textContent = tasks.length - complete;
   document.getElementById("progress").max = tasks.length;
   document.getElementById("progress").value = complete;
-  document.getElementById("progress-label").textContent = `${complete} / ${tasks.length} 项首版任务已完成`;
+  document.getElementById("progress-label").textContent = `${complete} / ${tasks.length} 项当前任务已完成`;
   document.getElementById("requirements").replaceChildren(...data.requirements.map(requirement => {
     const item = node("li");
     item.append(node("strong", requirement.title), node("p", requirement.acceptance));

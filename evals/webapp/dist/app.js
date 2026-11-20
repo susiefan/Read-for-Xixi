@@ -209,6 +209,7 @@ function showDetails() {
   addLine(evidence, "画面证据", page.evidence);
   addLine(evidence, "附加找图栏", page.activity);
   addLine(evidence, "背景计划", version.background?.label);
+  if (page.narration?.["zh-CN"] && page.narration["zh-CN"] !== page.story) addLine(evidence, "中文共读译文", page.narration["zh-CN"]);
   addLine(evidence, "本页道具", page.visualAsset?.label);
   addLine(evidence, "拟复用", page.mimiAssets?.join("、"));
   for (const note of page.scriptNotes || []) addLine(evidence, "脚本核对建议", note);

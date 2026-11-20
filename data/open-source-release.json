@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "goal": "整理并发布共读工具代码与导入工具；本地复用现有《圣诞树》《最心爱的玩具》，不创作新书。",
+  "goal": "发布可复用的家长照片制书工作流、白猫复用/自定义角色、家长评测后配音及经授权的脱敏评测贡献。",
   "repository": "https://github.com/susiefan/Read-for-Xixi",
-  "updatedAt": "2026-11-20T04:23:51.884420+00:00",
+  "updatedAt": "2026-11-20T06:17:06.603511+00:00",
   "requirements": [
     {
       "title": "可复现安装",
@@ -238,6 +238,59 @@
       "evidence": [],
       "release": "later",
       "updatedAt": "2026-11-20T03:39:50.013245+00:00"
+    },
+    {
+      "id": "parent-setup",
+      "title": "家长初始化与照片工作流",
+      "status": "done",
+      "note": "已实现称呼/年龄/角色初始化、照片顺序、原文优先、脚本/背景/前景资产、评测版本、审核后配音和本地安装。",
+      "acceptance": "代码/文档/测试和发布证据齐全",
+      "evidence": [
+        "skills/setup-picture-book/SKILL.md",
+        "scripts/photo_book_workflow.py",
+        "tests/test_photo_workflow.py"
+      ],
+      "release": "v0.3",
+      "updatedAt": "2026-11-20T06:17:06.603511+00:00"
+    },
+    {
+      "id": "avatar-import",
+      "title": "原创角色说明与角色导入",
+      "status": "done",
+      "note": "内置白猫直接复用；自定义 JSON 本地导入、口型/眨眼/呼吸及六个本地角色保存已实现。",
+      "acceptance": "代码/文档/测试和发布证据齐全",
+      "evidence": [
+        "skills/create-reading-avatar/SKILL.md",
+        "app/readingAvatar.ts",
+        "docs/custom-companions.md",
+        "https://storyforxixi.susiefan.com/"
+      ],
+      "release": "v0.3",
+      "updatedAt": "2026-11-20T06:17:06.603511+00:00"
+    },
+    {
+      "id": "feedback-contribution",
+      "title": "授权评测贡献与 LLM rubric",
+      "status": "done",
+      "note": "已整理经用户许可的207条真实评分；共享LLM rubric、按哈希批准后贡献PR、默认不上传均已实现。",
+      "acceptance": "代码/文档/测试和发布证据齐全",
+      "evidence": [
+        "evals/contributions/maintainer-feedback-v1.json",
+        "prompts/interaction-judge.md",
+        "scripts/contribute_evals.py"
+      ],
+      "release": "v0.3",
+      "updatedAt": "2026-11-20T06:17:06.603511+00:00"
+    },
+    {
+      "id": "v030-release",
+      "title": "发布完整家长工作流版本",
+      "status": "active",
+      "note": "等待最终验证与 GitHub CI；体验站同步导入入口。",
+      "acceptance": "代码/文档/测试和发布证据齐全",
+      "evidence": [],
+      "release": "v0.3",
+      "updatedAt": "2026-11-20T05:28:16.324981+00:00"
     }
   ],
   "history": [
@@ -318,6 +371,12 @@
       "task": "发布 v0.2.0",
       "status": "done",
       "note": "已公开发布代码、原创猫咪、导入工具、评测和设计文档；本地复用《圣诞树》《最心爱的玩具》，无完整书包上传。"
+    },
+    {
+      "at": "2026-11-20T05:28:16.324981+00:00",
+      "task": "扩展完整家长工作流",
+      "status": "active",
+      "note": "加入照片制作、家长初始化/评测后配音、可选反馈贡献和已有白猫复用，不制作新演示书或小象。"
     }
   ]
 }

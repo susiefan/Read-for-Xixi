@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create a reading companion"
+  short_description: "Create an importable animal reading companion"
+  default_prompt: "Use $create-reading-avatar to create a reading companion based on my child’s favourite animal and colours."

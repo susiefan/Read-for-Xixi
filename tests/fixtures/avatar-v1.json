@@ -1,0 +1,150 @@
+{
+  "format": "read-for-xixi-avatar",
+  "version": 1,
+  "id": "structural-test-fixture",
+  "name": "Parser test fixture",
+  "description": "Synthetic geometry used only by unit tests",
+  "creator": "Read for Xixi tests",
+  "license": "MIT",
+  "palette": [
+    "#4d5660",
+    "#b2cfd2",
+    "#d7e7e7",
+    "#e9bdb5",
+    "#edc4b9",
+    "#eef5ee",
+    "#8eb3bb",
+    "#b6d9c8",
+    "#9a81b2",
+    "#b4a0c9",
+    "#f7edd9",
+    "#d4c2b4",
+    "#34454c",
+    "#ffffff",
+    "#e9c979",
+    "#bc7780"
+  ],
+  "rig": {
+    "headPivot": [
+      360,
+      385
+    ],
+    "leftEarPivot": [
+      254,
+      303
+    ],
+    "rightEarPivot": [
+      466,
+      303
+    ]
+  },
+  "parts": {
+    "tail": [],
+    "body": [
+      {
+        "tag": "ellipse",
+        "attrs": {
+          "cx": 360,
+          "cy": 500,
+          "rx": 100,
+          "ry": 100,
+          "fill": "#b2cfd2"
+        }
+      }
+    ],
+    "head": [
+      {
+        "tag": "ellipse",
+        "attrs": {
+          "cx": 360,
+          "cy": 300,
+          "rx": 100,
+          "ry": 100,
+          "fill": "#b2cfd2"
+        }
+      }
+    ],
+    "leftEar": [],
+    "rightEar": [],
+    "eyes": [
+      {
+        "origin": [
+          325,
+          300
+        ],
+        "shapes": [
+          {
+            "tag": "ellipse",
+            "attrs": {
+              "cx": 325,
+              "cy": 300,
+              "rx": 8,
+              "ry": 12,
+              "fill": "#b2cfd2"
+            }
+          }
+        ]
+      },
+      {
+        "origin": [
+          395,
+          300
+        ],
+        "shapes": [
+          {
+            "tag": "ellipse",
+            "attrs": {
+              "cx": 395,
+              "cy": 300,
+              "rx": 8,
+              "ry": 12,
+              "fill": "#b2cfd2"
+            }
+          }
+        ]
+      }
+    ],
+    "mouth": {
+      "origin": [
+        360,
+        350
+      ],
+      "closed": [
+        {
+          "tag": "ellipse",
+          "attrs": {
+            "cx": 360,
+            "cy": 350,
+            "rx": 10,
+            "ry": 2,
+            "fill": "#b2cfd2"
+          }
+        }
+      ],
+      "open": [
+        {
+          "tag": "ellipse",
+          "attrs": {
+            "cx": 360,
+            "cy": 354,
+            "rx": 10,
+            "ry": 6,
+            "fill": "#b2cfd2"
+          }
+        }
+      ]
+    },
+    "front": [
+      {
+        "tag": "ellipse",
+        "attrs": {
+          "cx": 360,
+          "cy": 550,
+          "rx": 90,
+          "ry": 30,
+          "fill": "#b2cfd2"
+        }
+      }
+    ]
+  }
+}

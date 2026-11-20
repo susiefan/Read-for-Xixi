@@ -1,0 +1,37 @@
+{
+  "version": "0.3.0",
+  "checkedAt": "2026-11-20T06:13:33.042917+00:00",
+  "checks": {
+    "typescriptTests": 9,
+    "pythonTests": 16,
+    "typecheck": "pass",
+    "pythonCompile": "pass",
+    "build": "pass",
+    "skillValidation": "both skills passed",
+    "avatarParser": "allowlisted JSON; local storage; existing white cat reused",
+    "photoWorkflow": "local fixtures with mocked provider; review gate and stale script/asset protection passed",
+    "contributionConsent": "exact payload hash required before network; test passed",
+    "maintainerFeedback": {
+      "records": 207,
+      "script": 102,
+      "visual": 91,
+      "legacyOverall": 14,
+      "permission": "explicit project owner authorization",
+      "sourceBookContentIncluded": false
+    }
+  },
+  "hostedSite": {
+    "status": "Sites native deploy succeeded",
+    "version": 12,
+    "sourceCommit": "f7c6b18d8dcd690be82d465b00a607b18f670dab",
+    "domain": "https://storyforxixi.susiefan.com/",
+    "existingBooksPreserved": 12
+  },
+  "limits": [
+    "No computer/browser automation was used",
+    "No paid model generation or final TTS was run for a new parent book during validation",
+    "Founder-reported n=5 ages 2–4 observations are qualitative, not efficacy validation",
+    "HTTP GET verification can be blocked by site anti-bot protection; native Sites deployment is verified"
+  ],
+  "publicationScope": "Code, original cats, skills/prompts, judge, schemas and explicitly consented redacted editorial reviews; no book packages, scans, audio, child profiles or new elephant example"
+}

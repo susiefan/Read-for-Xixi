@@ -1,0 +1,869 @@
+{
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "read-for-xixi-avatar"
+    },
+    "version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "maxLength": 48
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 48
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "creator": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "palette": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 16,
+      "items": {
+        "type": "string",
+        "pattern": "^#[0-9a-fA-F]{6}$"
+      }
+    },
+    "rig": {
+      "type": "object",
+      "properties": {
+        "headPivot": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 720
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 720
+            }
+          ],
+          "minItems": 2,
+          "maxItems": 2,
+          "items": false
+        },
+        "leftEarPivot": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 720
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 720
+            }
+          ],
+          "minItems": 2,
+          "maxItems": 2,
+          "items": false
+        },
+        "rightEarPivot": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 720
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 720
+            }
+          ],
+          "minItems": 2,
+          "maxItems": 2,
+          "items": false
+        }
+      },
+      "required": [
+        "headPivot",
+        "leftEarPivot",
+        "rightEarPivot"
+      ],
+      "additionalProperties": false
+    },
+    "parts": {
+      "type": "object",
+      "properties": {
+        "tail": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/shape"
+          },
+          "maxItems": 120
+        },
+        "body": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/shape"
+          },
+          "maxItems": 120,
+          "minItems": 1
+        },
+        "head": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/shape"
+          },
+          "maxItems": 120,
+          "minItems": 1
+        },
+        "leftEar": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/shape"
+          },
+          "maxItems": 120
+        },
+        "rightEar": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/shape"
+          },
+          "maxItems": 120
+        },
+        "eyes": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "properties": {
+              "origin": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 720
+                  },
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 720
+                  }
+                ],
+                "minItems": 2,
+                "maxItems": 2,
+                "items": false
+              },
+              "shapes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/shape"
+                },
+                "maxItems": 120,
+                "minItems": 1
+              }
+            },
+            "required": [
+              "origin",
+              "shapes"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "mouth": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 720
+                },
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 720
+                }
+              ],
+              "minItems": 2,
+              "maxItems": 2,
+              "items": false
+            },
+            "closed": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/shape"
+              },
+              "maxItems": 120,
+              "minItems": 1
+            },
+            "open": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/shape"
+              },
+              "maxItems": 120,
+              "minItems": 1
+            }
+          },
+          "required": [
+            "origin",
+            "closed",
+            "open"
+          ],
+          "additionalProperties": false
+        },
+        "front": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/shape"
+          },
+          "maxItems": 120,
+          "minItems": 1
+        }
+      },
+      "required": [
+        "tail",
+        "body",
+        "head",
+        "leftEar",
+        "rightEar",
+        "eyes",
+        "mouth",
+        "front"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "id",
+    "name",
+    "description",
+    "creator",
+    "license",
+    "palette",
+    "rig",
+    "parts"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/susiefan/Read-for-Xixi/schemas/reading-avatar.schema.json",
+  "title": "Read for Xixi custom animated companion v1",
+  "$defs": {
+    "shape": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "const": "path"
+            },
+            "attrs": {
+              "type": "object",
+              "properties": {
+                "d": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 12000,
+                  "pattern": "^[MmLlHhVvCcSsQqTtAaZz0-9eE+.,\\s-]+$"
+                },
+                "fill": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "stroke": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "strokeWidth": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 40
+                },
+                "strokeLinecap": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "strokeLinejoin": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "opacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "fillOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "strokeOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "d"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "tag",
+            "attrs"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "const": "ellipse"
+            },
+            "attrs": {
+              "type": "object",
+              "properties": {
+                "cx": {
+                  "type": "number",
+                  "minimum": -1440,
+                  "maximum": 2160
+                },
+                "cy": {
+                  "type": "number",
+                  "minimum": -1440,
+                  "maximum": 2160
+                },
+                "rx": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 2160
+                },
+                "ry": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 2160
+                },
+                "fill": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "stroke": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "strokeWidth": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 40
+                },
+                "strokeLinecap": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "strokeLinejoin": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "opacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "fillOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "strokeOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "cx",
+                "cy",
+                "rx",
+                "ry"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "tag",
+            "attrs"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "const": "circle"
+            },
+            "attrs": {
+              "type": "object",
+              "properties": {
+                "cx": {
+                  "type": "number",
+                  "minimum": -1440,
+                  "maximum": 2160
+                },
+                "cy": {
+                  "type": "number",
+                  "minimum": -1440,
+                  "maximum": 2160
+                },
+                "r": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 2160
+                },
+                "fill": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "stroke": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "strokeWidth": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 40
+                },
+                "strokeLinecap": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "strokeLinejoin": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "opacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "fillOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "strokeOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "cx",
+                "cy",
+                "r"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "tag",
+            "attrs"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "const": "rect"
+            },
+            "attrs": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "number",
+                  "minimum": -1440,
+                  "maximum": 2160
+                },
+                "y": {
+                  "type": "number",
+                  "minimum": -1440,
+                  "maximum": 2160
+                },
+                "width": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 2160
+                },
+                "height": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 2160
+                },
+                "rx": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 2160
+                },
+                "ry": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 2160
+                },
+                "fill": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "stroke": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "strokeWidth": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 40
+                },
+                "strokeLinecap": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "strokeLinejoin": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "opacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "fillOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "strokeOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "x",
+                "y",
+                "width",
+                "height"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "tag",
+            "attrs"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "const": "line"
+            },
+            "attrs": {
+              "type": "object",
+              "properties": {
+                "x1": {
+                  "type": "number",
+                  "minimum": -1440,
+                  "maximum": 2160
+                },
+                "y1": {
+                  "type": "number",
+                  "minimum": -1440,
+                  "maximum": 2160
+                },
+                "x2": {
+                  "type": "number",
+                  "minimum": -1440,
+                  "maximum": 2160
+                },
+                "y2": {
+                  "type": "number",
+                  "minimum": -1440,
+                  "maximum": 2160
+                },
+                "fill": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "stroke": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "strokeWidth": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 40
+                },
+                "strokeLinecap": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "strokeLinejoin": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "opacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "fillOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "strokeOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "x1",
+                "y1",
+                "x2",
+                "y2"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "tag",
+            "attrs"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "const": "polygon"
+            },
+            "attrs": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 12000,
+                  "pattern": "^[0-9eE+.,\\s-]+$"
+                },
+                "fill": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "stroke": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "strokeWidth": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 40
+                },
+                "strokeLinecap": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "strokeLinejoin": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "opacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "fillOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "strokeOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "points"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "tag",
+            "attrs"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "const": "polyline"
+            },
+            "attrs": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 12000,
+                  "pattern": "^[0-9eE+.,\\s-]+$"
+                },
+                "fill": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "stroke": {
+                  "type": "string",
+                  "pattern": "^(none|#[0-9a-fA-F]{6})$"
+                },
+                "strokeWidth": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 40
+                },
+                "strokeLinecap": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "strokeLinejoin": {
+                  "enum": [
+                    "round",
+                    "square",
+                    "butt",
+                    "miter",
+                    "bevel"
+                  ]
+                },
+                "opacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "fillOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "strokeOpacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "points"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "tag",
+            "attrs"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}
