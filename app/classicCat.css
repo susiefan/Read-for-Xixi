@@ -1,0 +1,39 @@
+.mimi-2d,.mimi-2d svg { width:100%; height:100%; display:block; }
+.mimi-2d svg { object-fit:cover; }
+.mimi-2d .cat { transform-origin:360px 505px; animation:cat-breathe 3.6s ease-in-out infinite; }
+.mimi-2d .head { transform-origin:360px 356px; animation:head-idle 5.2s ease-in-out infinite; }
+.mimi-2d .tail { transform-origin:485px 505px; animation:tail-swish 2.8s ease-in-out infinite; }
+.mimi-2d .eyes { transform-origin:center; transform-box:fill-box; animation:blink 5.5s infinite; }
+.mimi-2d .glasses,.mimi-2d .goggles { pointer-events:none; }
+.mimi-2d .mouth-opening { transform-origin:360px 390px; transform:scaleY(.1); transition:transform .2s ease; }
+.mimi-2d .tongue { opacity:0; }
+.mimi-2d .paw { transform-origin:center top; transform-box:fill-box; }
+.mimi-2d .sun { animation:sun-pulse 4.5s ease-in-out infinite; transform-origin:center; transform-box:fill-box; }
+.mimi-2d .sea { animation:sea-drift 4s ease-in-out infinite alternate; }
+.mimi-2d .sea-front { animation-delay:-1.3s; }
+.mimi-2d .farm-scene { animation:farm-drift 6s ease-in-out infinite alternate; transform-origin:center bottom; }
+.mimi-2d .story-prop { animation:story-prop-enter .48s cubic-bezier(.2,.8,.2,1) both; transform-box:fill-box; transform-origin:center; }
+.mimi-2d .wearable-prop { animation:wearable-prop-enter .55s cubic-bezier(.2,.8,.2,1) both; transform-box:fill-box; transform-origin:center; }
+.mimi-2d .generated-page-asset { filter:drop-shadow(0 8px 12px rgba(55,54,47,.16)); }
+.mimi-2d .seagull { animation:seagull-swoop 2.2s ease-in-out infinite; }
+.mimi-2d.is-speaking .mouth-opening { animation:talk-smile-mouth .38s ease-in-out infinite alternate; }
+.mimi-2d.is-speaking .tongue { animation:talk-tongue .42s ease-in-out infinite alternate; }
+.mimi-2d.is-speaking .paw-right { animation:paw-talk .72s ease-in-out infinite alternate; }
+.mimi-2d.is-speaking .head { animation:head-talk .9s ease-in-out infinite alternate; }
+.mimi-2d.mood-happy .head { transform:rotate(-5deg) translateY(-3px); }
+.mimi-2d.mood-curious .head,.mimi-2d.mood-listening .head { transform:rotate(4deg); }
+@keyframes cat-breathe { 0%,100% { transform:translateY(0) scale(1); }50% { transform:translateY(-5px) scale(1.008); } }
+@keyframes head-idle { 0%,72%,100% { transform:rotate(0); }82% { transform:rotate(3deg); }90% { transform:rotate(-2deg); } }
+@keyframes head-talk { from { transform:rotate(-2deg) translateY(0); }to { transform:rotate(2deg) translateY(-4px); } }
+@keyframes tail-swish { 0%,100% { stroke-width:43px; }50% { stroke-width:48px; } }
+@keyframes blink { 0%,44%,48%,100% { transform:scaleY(1); }46% { transform:scaleY(.08); } }
+@keyframes talk-smile-mouth { from { transform:scaleY(.14); }to { transform:scaleY(.82); } }
+@keyframes talk-tongue { from { opacity:.15; }to { opacity:1; } }
+@keyframes paw-talk { from { transform:rotate(0); }to { transform:rotate(-8deg) translateY(-5px); } }
+@keyframes sun-pulse { 0%,100% { transform:scale(1); opacity:.78; }50% { transform:scale(1.06); opacity:.92; } }
+@keyframes sea-drift { from { transform:translateX(-7px); }to { transform:translateX(7px); } }
+@keyframes farm-drift { from { transform:translateX(-2px); }to { transform:translateX(3px); } }
+@keyframes story-prop-enter { from { opacity:0; }to { opacity:1; } }
+@keyframes wearable-prop-enter { from { opacity:0; transform:translateY(-18px); }to { opacity:1; transform:translateY(0); } }
+@keyframes seagull-swoop { 0%,100% { transform:translate(18px,-10px) rotate(-3deg); }50% { transform:translate(-22px,13px) rotate(3deg); } }
+@media(prefers-reduced-motion:reduce){.mimi-2d *{animation:none!important}}

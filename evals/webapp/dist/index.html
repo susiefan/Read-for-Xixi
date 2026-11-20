@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="在本机逐页对照原始绘本扫描、Mimi 共读脚本和 Live2D 视觉稿。">
+  <title>Mimi 脚本评审 · Read for Xixi</title>
+  <link rel="stylesheet" href="/app.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><div><p class="eyebrow">READ FOR XIXI</p><h1>Mimi 脚本评审</h1></div></div>
+      <div class="pager"><a class="button quiet" href="/production">制作进度</a>
+        <button type="button" id="feedback-button" class="button quiet">反馈汇总 <span aria-hidden="true">↗</span></button></div>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <p id="load-status" role="status">正在读取评审稿…</p>
+    <section id="review-workspace" hidden>
+      <div class="navigation">
+        <label class="control">绘本<select id="book"></select></label>
+        <label class="control compact">版本<select id="version"></select></label>
+        <label class="control compact">脚本筛选<select id="filter">
+          <option value="all">全部页</option><option value="pending">未评分</option>
+          <option value="failed">待重写</option><option value="passed">已通过</option>
+        </select></label>
+        <label class="control page-control">跳到<select id="page"></select></label>
+      </div>
+      <div class="progress-row">
+        <progress id="progress" value="0" max="1" aria-label="本书评审进度"></progress>
+        <p id="progress-label"></p>
+      </div>
+      <div id="page-heading" class="page-heading">
+        <div><p id="page-meta" class="eyebrow"></p><h2 id="page-title"></h2></div>
+        <div class="pager">
+          <button type="button" class="button quiet" id="previous">‹ 上一页</button>
+          <button type="button" class="button quiet" id="next">下一页 ›</button>
+        </div>
+      </div>
+
+      <p id="no-pages" class="empty" hidden>这个筛选下没有页。</p>
+      <div class="spread" id="spread">
+        <div class="review-materials">
+          <div class="reference-grid">
+            <section class="panel scan-panel" aria-labelledby="scan-title">
+              <div class="panel-top"><h3 id="scan-title">原始扫描</h3><button id="zoom" type="button" class="text-button">放大</button></div>
+              <div class="scan-area">
+                <button id="scan-button" type="button" aria-label="放大原始扫描" class="scan-button"><img id="scan" alt=""></button>
+                <p id="scan-status" role="status" hidden></p>
+              </div>
+              <p id="scan-meta" class="panel-caption"></p>
+            </section>
+            <section class="panel visual-review" aria-labelledby="visual-title">
+              <div class="panel-top"><h3 id="visual-title">Live2D 视觉稿</h3></div>
+              <p id="visual-empty" class="visual-note">这一版还没有视觉稿。</p>
+              <figure id="visual-preview" hidden>
+                <div class="visual-stage" id="visual-flat">
+                  <img id="visual-background" class="visual-background" alt="">
+                  <img id="visual-prop" class="visual-prop" alt="" hidden>
+                </div>
+                <div id="visual-composed" class="composed-preview" hidden>
+                  <svg id="scene" viewBox="0 0 720 720" role="img" aria-label="Mimi 与本页动画资产的合成预览"></svg>
+                  <div class="actions scene-actions">
+                    <button type="button" class="button quiet" id="replay-scene">重播动作</button>
+                    <label class="scene-format">舞台比例<select id="scene-format"><option value="square">方形</option><option value="wide">横屏</option><option value="portrait">竖屏</option></select></label>
+                  </div>
+                </div>
+                <figcaption id="visual-caption" class="visual-note"></figcaption>
+              </figure>
+            </section>
+          </div>
+          <section class="panel script-panel" aria-labelledby="script-title">
+            <div class="panel-top"><h3 id="script-title">Mimi 脚本</h3></div>
+            <div class="script-content">
+              <div class="turn narration"><h4>锁定旁白</h4><p id="story"></p></div>
+              <div class="turn"><h4>邀请</h4><p id="invitation"></p></div>
+              <div class="turn"><h4>回应</h4><p id="response"></p></div>
+              <details id="reading-reference" hidden><summary>Spotify 共读参考</summary><div id="reading-reference-content"></div></details>
+              <details id="earlier" hidden><summary id="earlier-label">查看上一版</summary><div id="earlier-content"></div></details>
+              <details id="evidence" hidden><summary>画面证据与资产计划</summary><div id="evidence-content"></div></details>
+            </div>
+          </section>
+        </div>
+        <aside class="panel ratings-panel" aria-labelledby="rating-title">
+          <div class="panel-top"><h3 id="rating-title">本页评审</h3><span id="page-state" class="state"></span></div>
+          <form id="rating-form" class="rating-form">
+            <fieldset><legend>脚本评分 <span class="muted">4 分及格</span></legend>
+              <div class="score-row" id="scores"></div>
+              <div class="scale-labels"><span>1 · 最差</span><span>7 · 最好</span></div>
+              <details><summary>怎么评分</summary><p>邀请有没有抓住当页最值得聊的人和事？两岁的孩子能用动作或一两个词参与吗？Mimi 的回应听起来自然，也接得上吗？</p><p>连读时，邻近几页有没有反复问同一件事？聊朋友相处时，有没有说到角色做的一件具体小事，并给孩子自己的选择留空间？</p></details>
+            </fieldset>
+            <label class="comment-label" for="comment">脚本评语 <span class="muted">选填</span></label>
+            <textarea id="comment" maxlength="4000" rows="2"></textarea>
+            <div id="visual-rating" class="visual-form" hidden>
+              <fieldset><legend>Live2D 评审</legend>
+                <div class="score-row binary-score">
+                  <label><input type="radio" name="visual-score" value="1"><span>通过</span></label>
+                  <label><input type="radio" name="visual-score" value="0"><span class="low">不通过</span></label>
+                </div>
+              </fieldset>
+              <label class="comment-label" for="visual-comment">视觉评语 <span class="muted">选填</span></label>
+              <textarea id="visual-comment" maxlength="4000" rows="2"></textarea>
+            </div>
+            <button type="submit" id="save-next" class="button primary">保存并下一页</button>
+            <p id="save-status" class="save-status" role="status"></p>
+          </form>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="scan-dialog" class="scan-dialog">
+    <div class="dialog-top"><h2 id="zoom-title">原始扫描</h2><form method="dialog"><button class="button quiet">关闭</button></form></div>
+    <img id="zoom-image" alt="">
+  </dialog>
+  <dialog id="feedback-dialog" class="feedback-dialog">
+    <div class="dialog-top"><h2>反馈汇总</h2><form method="dialog"><button class="button quiet">关闭</button></form></div>
+    <div id="feedback" aria-live="polite"></div>
+  </dialog>
+</body>
+</html>

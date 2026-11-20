@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/susiefan/Read-for-Xixi/schemas/book-package.schema.json",
+  "title": "Read for Xixi portable book v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "title",
+    "localized",
+    "intro",
+    "language",
+    "ageMonths",
+    "sourcePdf",
+    "license",
+    "pages"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,63}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "intro": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ageMonths": {
+      "type": "integer",
+      "minimum": 12,
+      "maximum": 96
+    },
+    "sourcePdf": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9-]+\\.pdf$"
+    },
+    "license": {
+      "type": "object",
+      "required": [
+        "spdx",
+        "url",
+        "source",
+        "creators",
+        "changes"
+      ],
+      "properties": {
+        "spdx": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "creators": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "changes": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "localized": {
+      "type": "object",
+      "required": [
+        "zh-CN",
+        "en"
+      ],
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "title",
+          "description"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "pageId",
+          "label",
+          "story",
+          "narration",
+          "invitation",
+          "response",
+          "visualPlan"
+        ],
+        "properties": {
+          "pageId": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{0,63}$"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "story": {
+            "type": "string"
+          },
+          "narration": {
+            "type": "object",
+            "required": [
+              "zh-CN"
+            ],
+            "properties": {
+              "zh-CN": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "invitation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "response": {
+            "type": "string",
+            "minLength": 1
+          },
+          "visualPlan": {
+            "type": "object",
+            "required": [
+              "sourcePageId",
+              "description",
+              "palette",
+              "theme",
+              "motifs"
+            ],
+            "properties": {
+              "sourcePageId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "palette": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^#[0-9a-fA-F]{6}$"
+                },
+                "minItems": 2
+              },
+              "theme": {
+                "type": "string",
+                "minLength": 1
+              },
+              "motifs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

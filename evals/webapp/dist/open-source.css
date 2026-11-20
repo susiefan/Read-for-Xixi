@@ -1,0 +1,56 @@
+:root { color-scheme:light; font:16px/1.6 system-ui,-apple-system,"PingFang SC",sans-serif; color:#39334b; background:#faf9fd; }
+* { box-sizing:border-box; }
+body { margin:0; }
+button,select { font:inherit; }
+button,a,select { -webkit-tap-highlight-color:transparent; }
+a { color:#6955a3; text-underline-offset:3px; }
+button,select { min-height:42px; border:1px solid #d9d1e6; border-radius:10px; background:#fff; padding:6px 13px; color:#4d4169; cursor:pointer; }
+button:disabled { opacity:.6; cursor:wait; }
+button:focus-visible,a:focus-visible,select:focus-visible { outline:3px solid #b79ce8; outline-offset:3px; }
+header { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:18px max(20px,calc((100vw - 1160px)/2)); background:white; border-bottom:1px solid #e7e1ef; }
+.brand { font-weight:750; text-decoration:none; font-size:20px; white-space:nowrap; }
+nav { display:flex; align-items:center; gap:20px; font-size:14px; }
+main { max-width:1200px; margin:auto; padding:32px 20px 60px; }
+h1,h2,p { margin:0; }
+h1 { font-size:32px; letter-spacing:-.03em; }
+h2 { font-size:20px; margin-bottom:14px; }
+section { margin-top:30px; }
+.heading { display:flex; justify-content:space-between; align-items:end; gap:20px; }
+.heading p { color:#777184; }
+#updated { font-size:14px; white-space:nowrap; }
+.summary { display:grid; grid-template-columns:repeat(3,minmax(90px,1fr)) 2fr; gap:16px; padding:22px; background:#f0ebf8; border-radius:18px; }
+.summary strong,.summary span { display:block; }
+.summary strong { font-size:30px; line-height:1.3; }
+.summary span { color:#746981; font-size:14px; }
+.progress { align-self:center; }
+.progress p { font-size:14px; margin-bottom:6px; }
+progress { width:100%; height:9px; appearance:none; border:0; background:#ded5ed; border-radius:10px; overflow:hidden; }
+progress::-webkit-progress-bar { background:#ded5ed; }
+progress::-webkit-progress-value { background:#6955a3; }
+progress::-moz-progress-bar { background:#6955a3; }
+.user-actions { border:1px solid #dfbd72; border-radius:16px; padding:20px; background:#fff8e9; }
+.user-actions h2 { margin-bottom:8px; }
+.user-actions p+p { margin-top:12px; }
+.requirements { list-style:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:0; padding:0; }
+.requirements li { border:1px solid #e7e1ef; padding:14px 16px; border-radius:12px; background:white; }
+.requirements strong { display:block; font-size:15px; }
+.requirements p { color:#777184; font-size:14px; margin-top:3px; }
+.section-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:12px; }
+.section-heading h2 { margin:0; }
+.section-heading label { font-size:14px; color:#777184; }
+.tasks { border:1px solid #e7e1ef; border-radius:16px; background:#fff; overflow:hidden; }
+.task { display:grid; grid-template-columns:120px minmax(0,1fr); padding:20px; gap:20px; }
+.task+.task { border-top:1px solid #eee9f3; }
+.status { align-self:start; width:fit-content; border-radius:8px; padding:3px 10px; font-size:14px; font-weight:650; background:#eeedf1; color:#716979; }
+.status[data-state=done] { background:#e5f2eb; color:#28654b; }
+.status[data-state=active] { background:#eee6fb; color:#64459b; }
+.status[data-state=waiting-user],.status[data-state=blocked] { background:#fff0d7; color:#8a5b11; }
+.task h3 { font-size:17px; margin:0 0 5px; }
+.task p { color:#706779; font-size:14px; }
+.task .acceptance { margin-top:10px; }
+.task .evidence { margin-top:7px; overflow-wrap:anywhere; color:#4e796a; }
+.history { list-style:none; margin:0; padding:0; }
+.history li { padding:11px 0; border-bottom:1px solid #e7e1ef; font-size:14px; }
+.history time { color:#867c91; margin-right:12px; }
+.poll-note { margin-top:26px; font-size:14px; color:#867c91; }
+@media(max-width:700px) { header { align-items:start; padding:16px 20px; flex-direction:column; gap:10px; } nav { flex-wrap:wrap; gap:16px; } .heading { align-items:start; flex-direction:column; gap:10px; } .summary { grid-template-columns:repeat(3,1fr); } .progress { grid-column:1/-1; } .requirements { grid-template-columns:1fr; } .task { grid-template-columns:1fr; gap:8px; } }

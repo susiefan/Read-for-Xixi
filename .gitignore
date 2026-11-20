@@ -18,3 +18,27 @@ confidential/generated-audio/**
 !confidential/generated-audio/README.md
 confidential/session-recordings/**
 !confidential/session-recordings/README.md
+
+# Local tooling, private jobs, reviews and caches
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+data/local/
+web-dist/
+*.sqlite3
+*.sqlite3-*
+examples/books/*/audio/.worker.lock
+examples/books/*/audio/status.json
+release/*.zip
+release/source-copy.json
+
+# Existing library contents are local-only; never publish copyrighted book packages.
+/public/library/
+/examples/books/
+
+# Evaluation UI is source, even though its established directory is named dist.
+!/evals/webapp/dist/
+!/evals/webapp/dist/**
