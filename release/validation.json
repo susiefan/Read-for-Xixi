@@ -36,5 +36,15 @@
     "status": "pass",
     "credentialFindings": 0,
     "privatePathFindings": 0
+  },
+  "githubCI": {
+    "status": "success",
+    "url": "https://github.com/susiefan/Read-for-Xixi/actions/runs/44673925689",
+    "commit": "88c886108b3d399502192290f57e513b87aa999d"
+  },
+  "release": {
+    "url": "https://github.com/susiefan/Read-for-Xixi/releases/tag/v0.2.0",
+    "status": "published",
+    "publishedAt": "2026-11-20T04:23:10Z"
   }
 }

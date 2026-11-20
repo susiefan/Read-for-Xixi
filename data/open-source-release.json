@@ -2,7 +2,7 @@
   "version": 1,
   "goal": "整理并发布共读工具代码与导入工具；本地复用现有《圣诞树》《最心爱的玩具》，不创作新书。",
   "repository": "https://github.com/susiefan/Read-for-Xixi",
-  "updatedAt": "2026-11-20T04:19:58.813489+00:00",
+  "updatedAt": "2026-11-20T04:23:51.884420+00:00",
   "requirements": [
     {
       "title": "可复现安装",
@@ -209,12 +209,15 @@
     {
       "id": "release",
       "title": "提交 GitHub 并发布版本",
-      "status": "active",
-      "note": "候选版本验证通过，正在提交 GitHub 分支与 CI；本次不上传完整书包。",
+      "status": "done",
+      "note": "PR #1 已合并；GitHub CI 通过；v0.2.0 已公开发布并附源码清单与验证结果。完整书包仅保留本地。",
       "acceptance": "公开源码、版本标签、Release 和下载包均可访问。",
-      "evidence": [],
+      "evidence": [
+        "https://github.com/susiefan/Read-for-Xixi/releases/tag/v0.2.0",
+        "https://github.com/susiefan/Read-for-Xixi/actions/runs/44673925689"
+      ],
       "release": "first",
-      "updatedAt": "2026-11-20T04:19:58.813489+00:00"
+      "updatedAt": "2026-11-20T04:23:51.884420+00:00"
     },
     {
       "id": "benchmark-100",
@@ -309,6 +312,12 @@
       "task": "干净安装验收",
       "status": "done",
       "note": "12项回归测试、Python编译、TypeScript和构建通过；准备发布代码和导入工具。"
+    },
+    {
+      "at": "2026-11-20T04:23:51.884420+00:00",
+      "task": "发布 v0.2.0",
+      "status": "done",
+      "note": "已公开发布代码、原创猫咪、导入工具、评测和设计文档；本地复用《圣诞树》《最心爱的玩具》，无完整书包上传。"
     }
   ]
 }
