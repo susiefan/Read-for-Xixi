@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-11-20T04:19:58.813489+00:00",
+  "publicationScope": "Code, original companions, import/evaluation tools, schemas, prompts and selected book metadata only. No book packages or private feedback.",
+  "localSelection": {
+    "books": [
+      "bo-xi-he-pi-pu-sheng-dan-shu",
+      "bo-xi-he-pi-pu-zui-xin-ai-de-wan-ju"
+    ],
+    "pages": 26,
+    "reusedAudioTracks": 78,
+    "newBooksCreatedForRelease": 0,
+    "scriptAndAssetIntegrity": "unchanged; original strings and SHA-256 checked",
+    "resourceHttpChecks": 139
+  },
+  "cleanSourceInstall": {
+    "node": "pnpm install --frozen-lockfile passed",
+    "python": "fresh venv plus requirements.txt passed",
+    "tests": {
+      "typescript": 3,
+      "python": 9,
+      "status": "pass"
+    },
+    "typecheck": "pass",
+    "pythonCompile": "pass",
+    "productionBuild": "pass",
+    "evaluationStaticFiles": "included and checked",
+    "privateContentBundled": false
+  },
+  "notPerformed": [
+    "Browser/computer-use testing (user preference)",
+    "Paid live model generation or semantic model scoring",
+    "Child research or efficacy evaluation"
+  ],
+  "historyAudit": "release/history-audit.json",
+  "publicFileAudit": {
+    "status": "pass",
+    "credentialFindings": 0,
+    "privatePathFindings": 0
+  }
+}

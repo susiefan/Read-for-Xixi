@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>开源发布进度 · Read for Xixi</title>
+  <link rel="stylesheet" href="/open-source.css">
+  <script defer src="/open-source.js"></script>
+</head>
+<body>
+  <header><a href="/open-source" class="brand">Read for Xixi</a><nav><a href="/production">绘本制作</a><a href="/">逐页评审</a><button id="refresh" type="button">刷新状态</button></nav></header>
+  <main>
+    <div class="heading"><div><h1>开源发布</h1><p id="goal"></p></div><p id="updated" role="status">正在读取进度…</p></div>
+    <section id="user-actions" class="user-actions" aria-labelledby="user-title"><h2 id="user-title">需要你处理</h2><div id="user-items"></div></section>
+    <section class="summary" aria-label="发布进度"><div><strong id="done">0</strong><span>已完成</span></div><div><strong id="active">0</strong><span>正在进行</span></div><div><strong id="remaining">0</strong><span>待完成</span></div><div class="progress"><p id="progress-label"></p><progress id="progress" max="1" value="0"></progress></div></section>
+    <section aria-labelledby="requirements-title"><h2 id="requirements-title">首版要求</h2><ul id="requirements" class="requirements"></ul></section>
+    <section aria-labelledby="tasks-title"><div class="section-heading"><h2 id="tasks-title">执行与验收</h2><label>显示 <select id="filter"><option value="all">全部任务</option><option value="active">正在进行</option><option value="unfinished">待完成</option><option value="done">已完成</option><option value="waiting-user">需要你处理</option></select></label></div><div id="tasks" class="tasks"></div></section>
+    <section aria-labelledby="history-title"><h2 id="history-title">最近更新</h2><ol id="history" class="history"></ol></section>
+    <p class="poll-note">每 10 秒刷新，页面关闭后停止。状态来自仓库中的发布记录。</p>
+  </main>
+</body>
+</html>

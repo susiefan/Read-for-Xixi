@@ -1,0 +1,14 @@
+{
+  "id": "mimi-beach-original-instruct2-v1",
+  "status": "approved",
+  "engine": "CosyVoice3",
+  "model": "Fun-CosyVoice3-0.5B",
+  "method": "inference_instruct2",
+  "instruction": "You are a helpful assistant. 请保持与现有Mimi样音完全相同的活泼、有趣、有喜剧停顿的年轻女生声音，像在给两岁孩子读绘本；自然、温暖，不要柔弱或做作的宝宝腔。<|endofprompt|>",
+  "instructionSha256": "c79a52f3a8e44477332e827b10c4e286e24eee8bef6a7ce087b60469fd3531a6",
+  "seed": 20260815,
+  "provenance": {
+    "source": "Existing approved Mimi instruct2 profile; fixed seed added for resumable new tracks.",
+    "method": "CosyVoice3 instruction synthesis with packaged engine prompt, not a child or family voice clone."
+  }
+}

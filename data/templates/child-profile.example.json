@@ -1,0 +1,31 @@
+{
+  "id": "child-profile-id",
+  "displayName": "宝宝",
+  "ageMonths": 24,
+  "birthDate": null,
+  "homeLanguages": ["zh-CN"],
+  "languageProfile": {
+    "expressiveLevel": "full-sentences",
+    "receptiveLevel": "follows-two-step-language",
+    "preferredTurnLength": "short",
+    "observations": []
+  },
+  "reasoningProfile": {
+    "demonstratedSkills": ["notice", "preference"],
+    "emergingSkills": ["cause", "sequence", "perspective"],
+    "observations": []
+  },
+  "preferences": {
+    "favoriteAnimals": [],
+    "favoriteTopics": [],
+    "favoriteBooks": [],
+    "dislikes": []
+  },
+  "supportPreferences": {
+    "acceptGesture": true,
+    "acceptPointing": true,
+    "acceptPretendPlay": true,
+    "maxExpansionsPerPage": 2,
+    "languageVariety": "standard-mandarin"
+  }
+}

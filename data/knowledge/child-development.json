@@ -1,0 +1,47 @@
+{
+  "version": "lovevery-shared-reading-22-36-v1",
+  "reviewedOn": "2026-11-11",
+  "sourceIndex": "https://blog.lovevery.com/skills-stages/",
+  "stages": [
+    {
+      "months": [22, 24],
+      "milestones": [
+        { "area": "语言与沟通", "summary": "约 24 个月时，孩子可以开始按简单提示指向书里的物品，也可能把两个词连起来说。", "sources": ["https://blog.lovevery.com/child-development/how-many-words-should-your-toddler-be-able-to-say/"] },
+        { "area": "游戏与模仿", "summary": "这个阶段可以尝试把熟悉动物的声音和图画配对，并在玩耍中模仿熟悉的声音。", "sources": ["https://blog.lovevery.com/child-development/make-me-a-match-your-toddlers-matching-skills/", "https://blog.lovevery.com/child-development/8-ways-toddlers-start-to-talk-between-18-and-24-months/"] }
+      ],
+      "readingGuidance": "用当前页上的具体人物、动作和声音发出一步邀请。让孩子指、做、学一声或用一两个词参与。可以问开放式问题，让指图或简单词语也足以参与。"
+    },
+    {
+      "months": [25, 27],
+      "milestones": [
+        { "area": "语言与沟通", "summary": "24–30 个月期间，一些孩子开始把三个词连起来，谈论熟悉的动作和经历。", "sources": ["https://blog.lovevery.com/child-development/get-ready-for-these-exciting-language-development-milestones/"] },
+        { "area": "认知与配对", "summary": "两岁前后逐渐能配对相同图画，可以从两张非常相像的图练起。", "sources": ["https://blog.lovevery.com/skills-stages/matching-and-sorting/"] }
+      ],
+      "readingGuidance": "用熟悉的角色和动词邀请孩子说一个动作或指出相同的图案。孩子用手指或短语即可参与。"
+    },
+    {
+      "months": [28, 30],
+      "milestones": [
+        { "area": "语言与叙事", "summary": "约 30 个月时，有些孩子开始加入熟悉故事的讲述。", "sources": ["https://blog.lovevery.com/child-development/get-ready-for-these-exciting-language-development-milestones/"] },
+        { "area": "假装游戏", "summary": "两岁左右的假装游戏可以从假装倒茶、喂玩偶等熟悉动作发展。", "sources": ["https://blog.lovevery.com/skills-stages/pretend-play/", "https://blog.lovevery.com/product-recommendations/welcome-to-the-play-kits-for-2-year-olds/"] }
+      ],
+      "readingGuidance": "可邀请孩子用假装动作加入场景，或给正在发生的事情配一个词或声音。共读新故事时，邀请仍立足当前页。"
+    },
+    {
+      "months": [31, 33],
+      "milestones": [
+        { "area": "语言与交流", "summary": "30–36 个月期间，有些孩子开始在谈话中接续几个来回。", "sources": ["https://blog.lovevery.com/skills-stages/talking-language-development/"] },
+        { "area": "认知与游戏", "summary": "这个年龄段可在简单拼图和动作游戏中练习记忆、注意力和计划。", "sources": ["https://blog.lovevery.com/product-recommendations/welcome-to-the-play-kits-for-2-year-olds/"] }
+      ],
+      "readingGuidance": "选当前页一个动作或表情做话头，让孩子和家长自然接话。Mimi 仍只发出一次邀请。"
+    },
+    {
+      "months": [34, 36],
+      "milestones": [
+        { "area": "语言与提问", "summary": "34–36 个月时，有些孩子的问题开始涉及人物、地点、时间和原因。", "sources": ["https://blog.lovevery.com/child-development/get-ready-for-these-exciting-language-development-milestones/"] },
+        { "area": "假装游戏", "summary": "两岁半到三岁，假装游戏可以从单个动作扩展到熟悉的角色和情境。", "sources": ["https://blog.lovevery.com/skills-stages/pretend-play/"] }
+      ],
+      "readingGuidance": "在画面给出清楚线索时，可以问一个简单的当页原因或角色想法，或邀请孩子做一个情境动作。"
+    }
+  ]
+}

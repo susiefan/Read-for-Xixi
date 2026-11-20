@@ -1,0 +1,8 @@
+{
+  "source": "existing local library; no newly authored books",
+  "redistribution": "local-only; book text, scans, voiceovers and story-specific assets excluded from public Git",
+  "books": [
+    {"id":"bo-xi-he-pi-pu-sheng-dan-shu","draft":"christmas-tree","title":"波西和皮普：圣诞树","en":{"title":"Pip and Posy: The Christmas Tree","description":"Pip and Posy decorate their Christmas tree and make treats together."}},
+    {"id":"bo-xi-he-pi-pu-zui-xin-ai-de-wan-ju","draft":"favorite-toy","title":"波西和皮普：最心爱的玩具","en":{"title":"Pip and Posy: The Bedtime Frog","description":"A sleepover story about missing a favourite toy and helping a friend."}}
+  ]
+}

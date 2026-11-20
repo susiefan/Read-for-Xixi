@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>绘本制作进度 · Read for Xixi</title>
+  <link rel="stylesheet" href="/app.css">
+  <script defer src="/production.js"></script>
+</head>
+<body>
+  <header class="topbar"><div class="topbar-inner">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><div><p class="eyebrow">READ FOR XIXI</p><h1>绘本制作进度</h1></div></div>
+    <div class="pager">
+      <button id="refresh-status" type="button" class="button quiet">刷新状态</button>
+      <a class="button quiet" href="/">逐页评审</a>
+    </div>
+  </div></header>
+  <main class="workspace">
+    <div class="progress-row">
+      <progress id="progress" max="6" value="0" aria-label="已入库的绘本"></progress>
+      <p id="summary" role="status">正在读取制作进度…</p>
+    </div>
+    <ul id="books" class="production-books"></ul>
+    <p id="release"></p>
+  </main>
+</body>
+</html>
