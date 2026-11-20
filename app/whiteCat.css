@@ -1,0 +1,12 @@
+.mimi-white-2d,
+.white-cat-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.white-cat-art {
+  pointer-events: none;
+  overflow: hidden;
+}

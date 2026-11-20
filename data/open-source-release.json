@@ -1,0 +1,314 @@
+{
+  "version": 1,
+  "goal": "整理并发布共读工具代码与导入工具；本地复用现有《圣诞树》《最心爱的玩具》，不创作新书。",
+  "repository": "https://github.com/susiefan/Read-for-Xixi",
+  "updatedAt": "2026-11-20T04:19:58.813489+00:00",
+  "requirements": [
+    {
+      "title": "可复现安装",
+      "acceptance": "新用户可以从公开仓库安装、播放示例、修改一页并导出。"
+    },
+    {
+      "title": "适龄共读",
+      "acceptance": "默认按钮翻页与自动播放；每页保留旁白、一个邀请和简短回应。"
+    },
+    {
+      "title": "原文与画面保真",
+      "acceptance": "锁定原文，互动有当页依据，保留自然中文与不剧透规则。"
+    },
+    {
+      "title": "人工评审回路",
+      "acceptance": "脚本 1–7 分、4 分通过，视觉通过或不通过；定向重做保留好稿。"
+    },
+    {
+      "title": "复用现有书库与发布边界",
+      "acceptance": "选用现有两本书并复用脚本、SVG 和配音。完整书包仅本地保存，GitHub 只发布代码、元数据与导入工具。"
+    },
+    {
+      "title": "透明验收",
+      "acceptance": "每项完成均有文件、测试或发布回执；评分来源如实标记。"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "inventory",
+      "title": "核对现有代码与发布范围",
+      "status": "done",
+      "note": "已核对本机代码、MIT 文件、GitHub 仓库和现有制作评审工具。",
+      "acceptance": "建立准确的首版文件清单与待修复项。",
+      "evidence": [
+        "LICENSE",
+        "scripts/authoring_prompt.py",
+        "evals/webapp/serve.py"
+      ],
+      "release": "first",
+      "updatedAt": "2026-11-20T03:39:50.013245+00:00"
+    },
+    {
+      "id": "dashboard",
+      "title": "建立需求与发布看板",
+      "status": "done",
+      "note": "需求、任务、用户待办、验收记录、自动刷新及状态筛选已提供，HTTP 页面和 API 验证通过。",
+      "acceptance": "能够查看需求、待办、已完成、用户待办及更新历史。",
+      "evidence": [
+        "evals/webapp/dist/open-source.html",
+        "data/open-source-release.json"
+      ],
+      "release": "first",
+      "updatedAt": "2026-11-20T03:40:58.574464+00:00"
+    },
+    {
+      "id": "github-auth",
+      "title": "完成 GitHub 设备码登录",
+      "status": "done",
+      "note": "设备码登录成功，GitHub API 已确认目标仓库的推送与管理权限。",
+      "acceptance": "账号拥有 susiefan/Read-for-Xixi 的写入权限。",
+      "evidence": [
+        "GitHub-repository-permissions"
+      ],
+      "release": "first",
+      "updatedAt": "2026-11-20T03:42:49.362671+00:00"
+    },
+    {
+      "id": "source-audit",
+      "title": "核对公开文件及 Git 历史",
+      "status": "done",
+      "note": "21 个历史提交、48 个历史 blob 未检出凭证；公开候选清单已排除书包、扫描、音频、专属素材和私人反馈。",
+      "acceptance": "记录上传文件、许可证与历史检查结果。",
+      "evidence": [],
+      "release": "first",
+      "updatedAt": "2026-11-20T04:17:42.502488+00:00"
+    },
+    {
+      "id": "reader",
+      "title": "整理可独立运行的阅读器",
+      "status": "done",
+      "note": "候选阅读器与两本现有书完成接入，139 个图像、素材、音轨 URL 的 HTTP 检查通过；TypeScript 和构建通过。",
+      "acceptance": "按钮、自动播放、重听、进度及中英界面可用。",
+      "evidence": [],
+      "release": "first",
+      "updatedAt": "2026-11-20T04:17:42.502488+00:00"
+    },
+    {
+      "id": "pipeline",
+      "title": "整理可移植制作流水线",
+      "status": "done",
+      "note": "已提供现有书库导入、一致性检查、通用 Schema、独立提示及定向重做。可选在线 Agent 仅做编译和 CLI 检查，未调用付费生成。",
+      "acceptance": "从示例输入到脚本、评审、配音、导出的命令可运行。",
+      "evidence": [
+        "scripts/regenerate_page.py",
+        "prompts/authoring.md"
+      ],
+      "release": "first",
+      "updatedAt": "2026-11-20T04:17:42.502488+00:00"
+    },
+    {
+      "id": "schemas",
+      "title": "固定书籍与素材格式",
+      "status": "done",
+      "note": "已提供版本化书包 Schema、原文锁、页序及来源哈希校验，以及带清单的导出和安全导入命令。",
+      "acceptance": "格式有 JSON Schema、校验器和完整示例。",
+      "evidence": [
+        "schemas/book-package.schema.json",
+        "scripts/book_package.py"
+      ],
+      "release": "first",
+      "updatedAt": "2026-11-20T03:57:58.527141+00:00"
+    },
+    {
+      "id": "evaluation",
+      "title": "整理可公开评审工具",
+      "status": "done",
+      "note": "评测服务已切换到现有两本书；每本13页，原始扫描 HTTP 200，脚本和既有 SVG 预览可读取。",
+      "acceptance": "一键保存、评分和视觉复评、指定页重做均可验证。",
+      "evidence": [
+        "evals/webapp/serve.py",
+        "scripts/review_loop.py"
+      ],
+      "release": "first",
+      "updatedAt": "2026-11-20T04:17:42.502488+00:00"
+    },
+    {
+      "id": "christmas-demo",
+      "title": "接入现有《圣诞树》",
+      "status": "done",
+      "note": "已直接复用现有 13 页脚本、SVG 及 39 条音轨；原文和互动一致，素材与音轨 SHA-256 相同。",
+      "acceptance": "导入后原文、互动和音轨与现有书库一致，引用资源完整。",
+      "evidence": [
+        "examples/library-selection.json",
+        "scripts/import_existing_library.py",
+        "scripts/check_existing_library.py"
+      ],
+      "release": "first",
+      "updatedAt": "2026-11-20T04:17:42.502488+00:00"
+    },
+    {
+      "id": "favorite-toy-demo",
+      "title": "接入现有《最心爱的玩具》",
+      "status": "done",
+      "note": "已直接复用现有 13 页脚本、SVG 及 39 条音轨；原文和互动一致，素材与音轨 SHA-256 相同。",
+      "acceptance": "导入后原文、互动和音轨与现有书库一致，引用资源完整。",
+      "evidence": [
+        "examples/library-selection.json",
+        "scripts/import_existing_library.py",
+        "scripts/check_existing_library.py"
+      ],
+      "release": "first",
+      "updatedAt": "2026-11-20T04:17:42.502488+00:00"
+    },
+    {
+      "id": "audio",
+      "title": "复用既有配音并验证引用",
+      "status": "done",
+      "note": "78 条已有 WAV 检查通过，不生成新配音。两本外部示例生成进程已停止并撤出发布范围。",
+      "acceptance": "音轨可播放，文本、声音来源和生成参数可追溯。",
+      "evidence": [
+        "examples/library-selection.json",
+        "scripts/import_existing_library.py",
+        "scripts/check_existing_library.py"
+      ],
+      "release": "first",
+      "updatedAt": "2026-11-20T04:17:42.502488+00:00"
+    },
+    {
+      "id": "eval-cases",
+      "title": "验证首批公开回归用例",
+      "status": "done",
+      "note": "首批 12 项结构与阅读回归测试通过，包含原文锁、包完整性、路径安全、通过维度保留与建议不阻断；无虚构人评。",
+      "acceptance": "结构与阅读测试通过，测试数据明确为合成结构字段，不冒充真人评分。",
+      "evidence": [
+        "tests/test_packages.py",
+        "tests/readingFlow.test.ts"
+      ],
+      "release": "first",
+      "updatedAt": "2026-11-20T04:17:42.502488+00:00"
+    },
+    {
+      "id": "documentation",
+      "title": "更新安装、架构与贡献指南",
+      "status": "done",
+      "note": "安装、现有书库导入、发布边界、贡献指南及独立设计目录均已更新；不再以新书作为示例。",
+      "acceptance": "新用户能依据文档完成全部示例流程。",
+      "evidence": [],
+      "release": "first",
+      "updatedAt": "2026-11-20T04:17:42.502488+00:00"
+    },
+    {
+      "id": "clean-install",
+      "title": "干净环境验收与 CI",
+      "status": "done",
+      "note": "全新目录已完成锁定依赖安装、12 项测试、编译、构建和公开范围扫描；不依赖私有书包或模型。",
+      "acceptance": "测试通过，示例资源齐全，保存实际验证结果。",
+      "evidence": [
+        "release/validation.json",
+        ".github/workflows/ci.yml"
+      ],
+      "release": "first",
+      "updatedAt": "2026-11-20T04:19:58.813489+00:00"
+    },
+    {
+      "id": "release",
+      "title": "提交 GitHub 并发布版本",
+      "status": "active",
+      "note": "候选版本验证通过，正在提交 GitHub 分支与 CI；本次不上传完整书包。",
+      "acceptance": "公开源码、版本标签、Release 和下载包均可访问。",
+      "evidence": [],
+      "release": "first",
+      "updatedAt": "2026-11-20T04:19:58.813489+00:00"
+    },
+    {
+      "id": "benchmark-100",
+      "title": "扩充到约 100 条评测案例",
+      "status": "planned",
+      "note": "首版流程验证后按书补充，保留评分来源。",
+      "acceptance": "按整书划分数据，公开可复现的评测结果。",
+      "evidence": [],
+      "release": "later",
+      "updatedAt": "2026-11-20T03:39:50.013245+00:00"
+    },
+    {
+      "id": "interop",
+      "title": "验证 Bloom 或 H5P 导出",
+      "status": "planned",
+      "note": "先固定书籍格式，再用一个开放示例验证。",
+      "acceptance": "外部播放器能载入示例。",
+      "evidence": [],
+      "release": "later",
+      "updatedAt": "2026-11-20T03:39:50.013245+00:00"
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-11-20T03:39:50.013245+00:00",
+      "task": "核对现有代码与发布范围",
+      "status": "done",
+      "note": "已确认当前公开仓库为早期版本，开始整理新的开源候选版本。"
+    },
+    {
+      "at": "2026-11-20T03:40:58.439836+00:00",
+      "task": "完成 GitHub 设备码登录",
+      "status": "waiting-user",
+      "note": "已提供 GitHub 设备登录链接和一次性验证码，等待完成登录。"
+    },
+    {
+      "at": "2026-11-20T03:40:58.574464+00:00",
+      "task": "建立需求与发布看板",
+      "status": "done",
+      "note": "需求、任务、用户待办、验收记录、自动刷新及状态筛选已提供，HTTP 页面和 API 验证通过。"
+    },
+    {
+      "at": "2026-11-20T03:42:49.362671+00:00",
+      "task": "完成 GitHub 设备码登录",
+      "status": "done",
+      "note": "设备码登录成功，GitHub API 已确认目标仓库的推送与管理权限。"
+    },
+    {
+      "at": "2026-11-20T03:42:49.425631+00:00",
+      "task": "核对公开文件及 Git 历史",
+      "status": "active",
+      "note": "已克隆独立候选目录，正在核对历史和明确上传清单。"
+    },
+    {
+      "at": "2026-11-20T03:57:58.527141+00:00",
+      "task": "固定书籍与素材格式",
+      "status": "done",
+      "note": "已提供版本化书包 Schema、原文锁、页序及来源哈希校验，以及带清单的导出和安全导入命令。"
+    },
+    {
+      "at": "2026-11-20T03:57:58.589267+00:00",
+      "task": "准备示例配音与生成说明",
+      "status": "active",
+      "note": "27 页共 81 条中文轨道已提交本地 CosyVoice；使用批准过的原 Mimi instruct2 配置，可中断后继续。"
+    },
+    {
+      "at": "2026-11-20T04:00:36.080376+00:00",
+      "task": "整理可公开评审工具",
+      "status": "done",
+      "note": "独立评测服务已接入两本开放示例，左侧原图和 SVG、右侧脚本 1–7 分及视觉通过/不通过，共用保存并下一页。反馈按版本写入 SQLite 和独立 Markdown。"
+    },
+    {
+      "at": "2026-11-20T04:00:36.280949+00:00",
+      "task": "整理可移植制作流水线",
+      "status": "done",
+      "note": "已整理图片优先的分工与最多三次检查回路，保留通过维度；语音为最后独立步骤，不依赖 Mac 私有数据库或 API key。"
+    },
+    {
+      "at": "2026-11-20T04:10:20.615838+00:00",
+      "task": "修正示例范围",
+      "status": "active",
+      "note": "用户要求仅选现有书库。已停止外部示例生成；用户确认完整书包只留本地，GitHub 公开代码和导入工具。"
+    },
+    {
+      "at": "2026-11-20T04:17:42.502488+00:00",
+      "task": "接入既有书库完成",
+      "status": "done",
+      "note": "两本现有书共26页、78条音轨已复用；139个资源地址检查通过。GitHub只发布工具代码。"
+    },
+    {
+      "at": "2026-11-20T04:19:58.813489+00:00",
+      "task": "干净安装验收",
+      "status": "done",
+      "note": "12项回归测试、Python编译、TypeScript和构建通过；准备发布代码和导入工具。"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "version": "mimi-3d-v1",
+  "renderer": "threejs",
+  "source": "app/mimi3dScene.ts",
+  "scenes": ["reading-nook", "kitchen", "beach", "farm", "garden", "winter", "autumn-garden"],
+  "props": ["cupcake", "cake", "mixing-bowl", "monster-mask", "garden-snail", "blackbird-snail", "shells", "ice-cream", "beach-ball", "milk-bottle", "toothpaste", "toy-train", "broken-truck", "toy-drum", "noise-makers", "story-book", "coin-pouch", "sandcastle", "sun-hat", "bike-helmet", "hard-hat", "blueberries", "bee-flowers", "coin-toss", "factory-gear", "seagull", "sheep"],
+  "wearablesAndPoses": ["goggles", "cheek-bandage", "cow-horns", "bear-paws", "self-hug", "work-apron"],
+  "style": "Rounded toy-like meshes, cream kitten, soft matte materials, peach and lilac accents, warm lighting. No image planes or SVG backdrops.",
+  "framing": "Resize the camera to the actual stage. Keep ears, paws and book visible. Full floor and backdrop; no letterboxing."
+}

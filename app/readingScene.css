@@ -1,0 +1,41 @@
+.reading-scene-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.reading-scene-layer.is-entering { animation: reading-scene-fade-in .48s ease-in-out both; }
+@keyframes reading-scene-fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+.reading-scene-layer [data-motion] {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.reading-scene-attached { animation: reading-breathe 4.4s ease-in-out infinite; }
+.reading-scene-layer [data-motion="pull"] { animation: reading-pull 2.6s ease-in-out both; }
+.reading-scene-layer [data-motion="ice"] { animation: reading-ice 2.4s ease-in-out both; }
+.reading-scene-layer [data-motion="sway"] { animation: reading-sway 2.8s ease-in-out 2; }
+.reading-scene-layer [data-motion="roll"] { animation: reading-roll 2.2s ease-in-out both; }
+.reading-scene-layer [data-motion="chain"] { animation: reading-chain 2s ease-out both; }
+.reading-scene-layer [data-motion="glow"] { animation: reading-glow 2.8s ease-in-out infinite alternate; }
+.reading-scene-layer [data-motion="brush"] { animation: reading-brush 2.4s ease-in-out both; }
+.reading-scene-layer [data-motion="plane"] { animation: reading-plane 2.8s ease-in-out both; }
+@keyframes reading-breathe { 50% { transform: translateY(-4px); } }
+@keyframes reading-pull { from { transform: translateX(-33px); } to { transform: translateX(0); } }
+@keyframes reading-ice { 0%, 100% { transform: translate(-9px, -5px) rotate(-6deg); } 50% { transform: translate(7px, 7px) rotate(5deg); } }
+@keyframes reading-sway { 50% { transform: rotate(5deg) translateY(3px); } }
+@keyframes reading-roll { from { transform: translateX(-20px) rotate(-60deg); } to { transform: translateX(0) rotate(0); } }
+@keyframes reading-chain { from { opacity: 0; transform: scaleX(.45); } to { opacity: 1; transform: scaleX(1); } }
+@keyframes reading-glow { from { opacity: .52; } to { opacity: 1; } }
+@keyframes reading-brush { 22%, 66% { transform: translate(6px, -9px) rotate(10deg); } 44%, 88% { transform: translate(-4px, -5px) rotate(-5deg); } }
+@keyframes reading-plane { from { transform: translate(-42px, 22px) rotate(9deg); } to { transform: translate(0) rotate(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .reading-scene-layer.is-entering { animation-duration: 1ms; }
+  .reading-scene-attached, .reading-scene-layer [data-motion] { animation: none; }
+}
+
+/* Original 2D Mimi over a reviewed scene: scene behind, cat, then front props. */
+.character-stack, .scene-character-stack { position: absolute; inset: 0; }
+.scene-character-stack > .mimi-2d { position: relative; }
