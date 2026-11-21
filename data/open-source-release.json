@@ -2,7 +2,7 @@
   "version": 1,
   "goal": "发布可复用的家长照片制书工作流、白猫复用/自定义角色、家长评测后配音及经授权的脱敏评测贡献。",
   "repository": "https://github.com/susiefan/Read-for-Xixi",
-  "updatedAt": "2026-11-20T06:17:06.603511+00:00",
+  "updatedAt": "2026-11-21T02:16:25.561057+00:00",
   "requirements": [
     {
       "title": "可复现安装",
@@ -27,6 +27,18 @@
     {
       "title": "透明验收",
       "acceptance": "每项完成均有文件、测试或发布回执；评分来源如实标记。"
+    },
+    {
+      "title": "家长初始化",
+      "acceptance": "制作前询问孩子称呼、年龄和角色偏好；已有白猫直接复用，自定义偏好才启动角色 skill。"
+    },
+    {
+      "title": "家长审核后配音",
+      "acceptance": "照片生成脚本和透明资产后先展示评测；当前脚本/译文与视觉通过人评，才开始最终配音。"
+    },
+    {
+      "title": "经许可贡献评测",
+      "acceptance": "先展示脱敏实际文件，得到对该哈希、目标仓库和 MIT 许可的明确同意后提交 PR；拒绝不影响制书。"
     }
   ],
   "tasks": [
@@ -285,12 +297,16 @@
     {
       "id": "v030-release",
       "title": "发布完整家长工作流版本",
-      "status": "active",
-      "note": "等待最终验证与 GitHub CI；体验站同步导入入口。",
+      "status": "done",
+      "note": "v0.3.0 已公开发布；PR 与主分支 CI 通过，25 项测试通过。两份 skill 和 prompt/rubric 下载可用，139 文件用途表位于说明末尾；v0.2.0 说明也已更新。",
       "acceptance": "代码/文档/测试和发布证据齐全",
-      "evidence": [],
+      "evidence": [
+        "https://github.com/susiefan/Read-for-Xixi/releases/tag/v0.3.0",
+        "https://github.com/susiefan/Read-for-Xixi/actions/runs/44854600015",
+        "https://storyforxixi.susiefan.com/"
+      ],
       "release": "v0.3",
-      "updatedAt": "2026-11-20T05:28:16.324981+00:00"
+      "updatedAt": "2026-11-21T02:16:25.561057+00:00"
     }
   ],
   "history": [
@@ -377,6 +393,12 @@
       "task": "扩展完整家长工作流",
       "status": "active",
       "note": "加入照片制作、家长初始化/评测后配音、可选反馈贡献和已有白猫复用，不制作新演示书或小象。"
+    },
+    {
+      "at": "2026-11-21T02:16:25.561057+00:00",
+      "task": "v0.3.0 完整家长工作流发布完成",
+      "status": "done",
+      "note": "两份 skill、家长工作流/白猫 prompt、共享 LLM rubric、207 条已授权评测与25项测试已发布；保留既有白猫和书库。"
     }
   ]
 }
