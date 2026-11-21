@@ -2,7 +2,7 @@
 
 ## Original work created here and released as open source
 
-We created the original SVG Mimi, white cat, procedural Three.js cat for Read for Xixi. We are releasing their artwork, rigs, geometry and the project source/tools/docs as open source under the MIT license (copyright 2026 Susie Fan; see LICENSE). MIT names the permission granted for these original works; it does not imply they came from a third-party art library. The SVG cats are custom animated artwork, not Live2D Cubism models.
+I created the original SVG Mimi, white cat, procedural Three.js cat for Read for Xixi. I am releasing their artwork, rigs, geometry and the project source/tools/docs as open source under the MIT license (copyright 2026 Susie Fan; see LICENSE). MIT names the permission granted for these original works; it does not imply they came from a third-party art library. The SVG cats are custom animated artwork, not Live2D Cubism models.
 
 ## Existing local library: not distributed
 

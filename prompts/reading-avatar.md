@@ -10,7 +10,7 @@ Choose Settings → White cat · Animated 2D (白猫 · 动画 2D). Keep its exa
 
 If I explicitly ask for a different animal or appearance, use $create-reading-avatar and the data-only contract below to create a new importable JSON. Ask what animal/colours I want only when that information is missing. The default is the existing white cat.
 
-The separate official Live2D Cubism sample cat is Tororo (white) / Hijiki (black): https://www.live2d.com/en/learn/sample/tororo-hijiki/ . It is free sample data under Live2D's own terms, not our MIT artwork or an MIT/open-source model: https://www.live2d.com/en/learn/sample/model-terms/ . The public repository's white cat is our original SVG rig and needs no Cubism download.
+The separate official Live2D Cubism sample cat is Tororo (white) / Hijiki (black): https://www.live2d.com/en/learn/sample/tororo-hijiki/ . It is free sample data under Live2D's own terms, not the project’s MIT artwork or an MIT/open-source model: https://www.live2d.com/en/learn/sample/model-terms/ . The public repository's white cat is the project’s original SVG rig and needs no Cubism download.
 
 ---
 

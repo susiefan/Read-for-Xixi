@@ -6,9 +6,9 @@ An open shared-reading toolkit: animated reading companions, image-grounded auth
 
 **在线体验：[storyforxixi.susiefan.com](https://storyforxixi.susiefan.com/)**
 
-我们想减轻家长反复朗读、跨语言讲述和临场想互动问题的负担，让普通纸质书也有可参与的共读体验。角色提供陪伴，邀请把注意力带回实体书。项目创建者对 5 位 2–4 岁儿童的早期观察中，孩子主要关注书本，角色似乎帮助维持参与；这是定性观察，不是效果验证。[问题、方案与研究依据](docs/why-read-for-xixi.md)。
+我想减轻家长反复朗读、跨语言讲述和临场想互动问题的负担，让普通纸质书也有可参与的共读体验。角色提供陪伴，邀请把注意力带回实体书。在我对 5 位 2–4 岁儿童的早期观察中，孩子主要关注书本，角色似乎帮助维持参与；这是定性观察，不是效果验证。[问题、方案与研究依据](docs/why-read-for-xixi.md)。
 
-三个内置伙伴的插画、矢量动画和 3D 造型由我们原创，并在这里以 MIT 许可开源，方便大家使用、修改与分享。[角色介绍和自定义指南](docs/custom-companions.md)。
+三个内置伙伴的插画、矢量动画和 3D 造型由我原创，并在这里以 MIT 许可开源，方便大家使用、修改与分享。[角色介绍和自定义指南](docs/custom-companions.md)。
 
 ## 把自己的书页照片变成共读体验
 

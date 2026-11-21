@@ -8,18 +8,18 @@ Open Settings (☰), then choose the reading companion:
 
 | Companion | Appearance and behaviour | Best starting point |
 |---|---|---|
-| Mimi · 3D | Our original warm cream-coloured cat, rounded toy-like geometry, a held book, blinking, breathing and speaking motion. | The default companion; use the glasses selector for none, black frames or blue goggles. |
-| White cat · Animated 2D | Our original soft white cat, pink ears, gentle green eyes and lavender book. Separate eyes, pupils, ears and small speaking mouth form its vector rig. | A quieter illustrated option; selected via White cat / 白猫 · 动画 2D. |
-| Mimi · 2D | Our original grey/taupe illustrated cat with a smiling muzzle, reading book and reusable story props. | The classic vector look; select Mimi · 2D / 原版 2D. |
+| Mimi · 3D | My original warm cream-coloured cat, rounded toy-like geometry, a held book, blinking, breathing and speaking motion. | The default companion; use the glasses selector for none, black frames or blue goggles. |
+| White cat · Animated 2D | My original soft white cat, pink ears, gentle green eyes and lavender book. Separate eyes, pupils, ears and small speaking mouth form its vector rig. | A quieter illustrated option; selected via White cat / 白猫 · 动画 2D. |
+| Mimi · 2D | My original grey/taupe illustrated cat with a smiling muzzle, reading book and reusable story props. | The classic vector look; select Mimi · 2D / 原版 2D. |
 | Your imported animal | A data-only vector design made from your child's preferences; the app adds blink, breathing, subtle ear motion and speaking mouth. | Reuse the white cat, or explicitly request a different animal. |
 
-We created the bundled Mimi, white-cat and 3D artwork ourselves and are releasing the artwork, rigs and code as open source under MIT. MIT is the permission we give others to use, modify and share these original works; it does not identify them as someone else's assets. The SVG companions use our own 2D animation, not the proprietary Cubism runtime. The existing hosted family app may also list older experimental/third-party companions; those are separate from the three original companions in the open-source package.
+I created the bundled Mimi, white-cat and 3D artwork myself and am releasing the artwork, rigs and code as open source under MIT. MIT is the permission I give others to use, modify and share these original works; it does not identify them as someone else's assets. The SVG companions use my own 2D animation, not the proprietary Cubism runtime. The existing hosted family app may also list older experimental/third-party companions; those are separate from the three original companions in the open-source package.
 
 ## Use the existing white cat
 
 Choose Settings → **White cat · Animated 2D / 白猫 · 动画 2D**. The artwork and rig are already included: [WhiteCatArtwork.tsx](../app/WhiteCatArtwork.tsx), [AnimatedWhiteCat.tsx](../app/AnimatedWhiteCat.tsx), [whiteCatRig.ts](../app/whiteCatRig.ts). Use [the reuse prompt](../prompts/reading-avatar.md) to ask an assistant to select/reuse this exact character, with no redesign or new illustration.
 
-For the separate Live2D Cubism sample, see [Tororo & Hijiki](https://www.live2d.com/en/learn/sample/tororo-hijiki/). Tororo is the white cat. This is Live2D's free sample data under its [sample terms](https://www.live2d.com/en/learn/sample/model-terms/), not our MIT/open-source artwork. The hosted app has a separate legacy Tororo option; the open-source default white cat is our own SVG rig.
+For the separate Live2D Cubism sample, see [Tororo & Hijiki](https://www.live2d.com/en/learn/sample/tororo-hijiki/). Tororo is the white cat. This is Live2D's free sample data under its [sample terms](https://www.live2d.com/en/learn/sample/model-terms/), not my MIT/open-source artwork. The hosted app has a separate legacy Tororo option; the open-source default white cat is my own SVG rig.
 
 ## Make your own
 
@@ -53,4 +53,4 @@ The avatar is stored in that browser, not uploaded. Keep your original JSON so y
 
 The canonical import rules are in the skill's [self-contained format reference](../skills/create-reading-avatar/references/avatar-format.md) and [JSON Schema](../schemas/reading-avatar.schema.json). Imported content contains vector geometry and metadata only. The renderer builds allowlisted SVG elements rather than injecting arbitrary markup; scripts, event handlers, URLs, images, nested SVG markup and external resources are rejected. Maximum file size is 120 KB, with 500 total shapes.
 
-A caregiver owns/controls the license of their newly created file. It is not automatically public or MIT merely because it was made using an open-source tool. Our bundled cat artwork is explicitly MIT.
+A caregiver owns/controls the license of their newly created file. It is not automatically public or MIT merely because it was made using an open-source tool. My bundled cat artwork is explicitly MIT.

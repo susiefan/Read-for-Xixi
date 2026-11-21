@@ -14,7 +14,7 @@ This design draws on **interactive shared-reading research**, rather than treati
 
 A young child's attention can shift quickly, and familiar books can become less engaging. Books with flaps and sound buttons offer extra ways to participate, but buying another special-format book for every topic can be costly.
 
-We aim to add reusable invitations, playful sounds/actions and small page-relevant visuals to books a family already owns. A favourite animal can be the reading companion: cats are included, and a caregiver can create an elephant or another animal using the prompt and skill. The companion stays gently animated while the child looks, points and plays with the physical book. This is a design goal, not a claim that software reproduces a flap's tactile experience or guarantees longer attention.
+I aim to add reusable invitations, playful sounds/actions and small page-relevant visuals to books a family already owns. A favourite animal can be the reading companion: cats are included, and a caregiver can create an elephant or another animal using the prompt and skill. The companion stays gently animated while the child looks, points and plays with the physical book. This is a design goal, not a claim that software reproduces a flap's tactile experience or guarantees longer attention.
 
 ## 3. Families want the physical book to remain the centre of attention
 
@@ -24,8 +24,8 @@ Read for Xixi uses a low-demand animated companion beside the physical book. It 
 
 ### Early project observation
 
-The project creator reports exploratory user research with **five children aged 2–4**. In those observations, the children mainly attended to the physical book rather than the character, while the character appeared to help them stay engaged. This is an early qualitative design signal. It is not presented as controlled evidence that the avatar caused better attention or improved language, and no child-level records are included in this repository.
+I conducted exploratory user research with **five children aged 2–4**. In those observations, the children mainly attended to the physical book rather than the character, while the character appeared to help them stay engaged. This is an early qualitative design signal. It is not presented as controlled evidence that the avatar caused better attention or improved language, and no child-level records are included in this repository.
 
 ## Why open source
 
-We created the original companions, artwork/rigs and reading workflow, and are releasing them so families and contributors can adapt the experience: choose a child's favourite animal, improve a language prompt, add an importer or contribute well-grounded evaluation cases. Our original code and bundled companion art are released under MIT; book rights and a caregiver's own avatar license remain separate.
+I created the original companions, artwork/rigs and reading workflow, and am releasing them so families and contributors can adapt the experience: choose a child's favourite animal, improve a language prompt, add an importer or contribute well-grounded evaluation cases. My original code and bundled companion art are released under MIT; book rights and a caregiver's own avatar license remain separate.
