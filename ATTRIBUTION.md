@@ -2,7 +2,7 @@
 
 ## Original work created here and released as open source
 
-I created the original SVG Mimi, white cat, procedural Three.js cat for Read for Xixi. I am releasing their artwork, rigs, geometry and the project source/tools/docs as open source under the MIT license (copyright 2026 Susie Fan; see LICENSE). MIT names the permission granted for these original works; it does not imply they came from a third-party art library. The SVG cats are custom animated artwork, not Live2D Cubism models.
+I made the SVG Mimi, white cat and Three.js cat for Read for Xixi. Their artwork, rigs and code are included under MIT (copyright 2026 Susie Fan; see LICENSE). You can use, change and share them while keeping the copyright and license notice. The SVG cats use the project's own animation code and do not need Cubism.
 
 ## Existing local library: not distributed
 
@@ -31,4 +31,4 @@ Research notes inherited from the early public prototype are background material
 
 ## Explicitly contributed editorial feedback
 
-The owner authorized publishing the 207 saved human editorial review records in evals/contributions/maintainer-feedback-v1.json under the project MIT contribution terms. These are scores and redacted comments with limited page/version metadata, not book content, family recordings or child-level research data. See that folder’s provenance and limitations. Other parents’ feedback remains local unless they explicitly approve the exact contribution.
+I authorized publishing my 207 saved editorial review records in evals/contributions/maintainer-feedback-v1.json under the project MIT contribution terms. These are scores and redacted comments with limited page/version metadata, not book content, family recordings or child-level research data. See that folder’s provenance and limitations. Other parents’ feedback remains local unless they explicitly approve the exact contribution.

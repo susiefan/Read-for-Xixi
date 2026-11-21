@@ -1,31 +1,31 @@
-# Why Read for Xixi exists
+# Why I made Read for Xixi
 
 [Try the app](https://storyforxixi.susiefan.com/).
 
-## 1. Caregivers get tired; interactive and bilingual reading adds work
+## Reading gets tiring, especially across languages
 
-Reading the same favourite book again can be tiring. A Mandarin-speaking caregiver reading an English picture book, or an English-speaking caregiver reading a Chinese one, may also be translating, choosing natural phrasing and thinking of a useful follow-up question. The work is more than pronouncing the printed words: noticing a picture clue, asking an age-appropriate question and leaving room for a child to point, imitate or talk all require attention.
+Parents can be tired and still want to read with their child. Reading an English book in a Mandarin-speaking family, or a Chinese book in an English-speaking family, adds another job: translating as you go. Then there are the questions. What would interest a two-year-old on this page? How do you ask without turning it into a test?
 
-Read for Xixi lets the family reuse prepared narration, one mandatory invitation and a brief response on each page. Authoring rules embed a first-level cue in the invitation, preserve original print separately from translation, avoid spoilers and let toddlers respond with actions or a few words. Preparing the content once reduces repeated improvisation. The current authoring prompts focus on Mandarin; the Chinese/English interface switch does not automatically translate a story or create English narration.
+I wanted narration and questions that a family could prepare once and use again. Each page has a reading, one invitation and a short response. The invitation gives the child a starting point. They can point, make a sound, act something out or say a few words. The original text is kept separate from any translation.
 
-This design draws on **interactive shared-reading research**, rather than treating audio playback as the full experience. A meta-analysis of 19 randomized trials found positive language effects from caregiver book-sharing interventions ([Dowdall et al., 2020](https://pubmed.ncbi.nlm.nih.gov/30737957/)). The AAP recommends joyful, reciprocal, language-rich shared reading and dialogic techniques ([2024 policy statement](https://publications.aap.org/pediatrics/article/doi/10.1542/peds.2024-069090/199467/Literacy-Promotion-An-Essential-Component-of)). These findings support the interaction design; they do not establish that this app improves language, that an avatar is equivalent to a caregiver, or that ordinary reading aloud has no value.
+The questions matter. [Research on caregiver book-sharing](https://pubmed.ncbi.nlm.nih.gov/30737957/) has found benefits for children's language, and the [AAP recommends reciprocal, language-rich shared reading](https://publications.aap.org/pediatrics/article/doi/10.1542/peds.2024-069090/199467/Literacy-Promotion-An-Essential-Component-of). That's why I built in chances to talk and respond. Those studies looked at shared reading with caregivers; they don't establish that this app has the same effects.
 
-## 2. Sustaining attention with ordinary books is difficult
+The current prompts focus on Mandarin. Switching the interface to English changes the menus and book metadata, not the narration.
 
-A young child's attention can shift quickly, and familiar books can become less engaging. Books with flaps and sound buttons offer extra ways to participate, but buying another special-format book for every topic can be costly.
+## Ordinary books can be hard to keep interesting
 
-I aim to add reusable invitations, playful sounds/actions and small page-relevant visuals to books a family already owns. A favourite animal can be the reading companion: cats are included, and a caregiver can create an elephant or another animal using the prompt and skill. The companion stays gently animated while the child looks, points and plays with the physical book. This is a design goal, not a claim that software reproduces a flap's tactile experience or guarantees longer attention.
+Young children can lose interest quickly. Flaps and sound buttons give them something to do, but buying a special-format book for every topic can get expensive. I wanted families to get more out of the books they already have.
 
-## 3. Families want the physical book to remain the centre of attention
+Read for Xixi adds small things to do while reading: look for a clue, copy a sound, pretend to drive, describe what happened or notice how a character feels. The visuals follow the page. A favourite animal can be the reading partner. Existing scripts, artwork and audio can be reused instead of made again.
 
-Many children under five are not yet able to read print independently. Their caregivers may want help with narration while avoiding a video-like experience where the child watches a screen instead of the book.
+## I want the child looking at the physical book
 
-Read for Xixi uses a low-demand animated companion beside the physical book. It holds a book facing itself, remains in place across page changes, uses subtle breathing/blinking and does not follow the cursor while reading. The invitations point attention back to the page and real-world action. A caregiver still participates and controls page turns; this is supported shared reading, not a claim of independent reading or a screen-free product.
+Many children under five can't yet read the words by themselves. A screen can help with narration, but it can also pull attention away from the book.
 
-### Early project observation
+I made the companion's movements small. It blinks, breathes and holds a book facing itself. It stays in place when the page changes and stops following the mouse during reading. The invitations send the child back to the page or ask them to do something with their hands or voice.
 
-I conducted exploratory user research with **five children aged 2–4**. In those observations, the children mainly attended to the physical book rather than the character, while the character appeared to help them stay engaged. This is an early qualitative design signal. It is not presented as controlled evidence that the avatar caused better attention or improved language, and no child-level records are included in this repository.
+In my early user research with **five children aged 2 to 4**, the children mainly looked at the physical book. The character seemed to help them stay engaged without becoming the main thing they watched. This was a small observation, not a controlled study of attention or language outcomes.
 
-## Why open source
+## Why I made it open source
 
-I created the original companions, artwork/rigs and reading workflow, and am releasing them so families and contributors can adapt the experience: choose a child's favourite animal, improve a language prompt, add an importer or contribute well-grounded evaluation cases. My original code and bundled companion art are released under MIT; book rights and a caregiver's own avatar license remain separate.
+I want other families to be able to use their own books, choose a companion their child likes and improve the questions in their own language. I included the code, original cats, prompts, skills and review tools so people can change them and share improvements. My original work is under MIT. Book rights and a parent's own character license are separate.

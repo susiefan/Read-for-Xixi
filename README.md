@@ -1,14 +1,16 @@
 # Read for Xixi · 和 Mimi 一起读
 
-把已有绘本、脚本、动画场景和配音接成亲子共读体验的开源工具包。保留原书文字，提供自然中文邀请、简短回应和可逐页评审的视觉素材。
+让 Mimi 陪孩子读纸质绘本，读完一页，停下来聊一聊。
 
-An open shared-reading toolkit: animated reading companions, image-grounded authoring rules, revision-aware evaluation, local library import and portable book packages.
+Read for Xixi helps families turn the picture books they own into guided reading sessions with Mimi.
 
-**在线体验：[storyforxixi.susiefan.com](https://storyforxixi.susiefan.com/)**
+[在线体验](https://storyforxixi.susiefan.com/)
 
-我想减轻家长反复朗读、跨语言讲述和临场想互动问题的负担，让普通纸质书也有可参与的共读体验。角色提供陪伴，邀请把注意力带回实体书。在我对 5 位 2–4 岁儿童的早期观察中，孩子主要关注书本，角色似乎帮助维持参与；这是定性观察，不是效果验证。[问题、方案与研究依据](docs/why-read-for-xixi.md)。
+我做这个项目，是想让家长在累的时候，也能轻松陪孩子读书。遇到不熟悉的语言，除了翻译，还得想怎么问，才能让两三岁的孩子愿意指一指、学一声，或说上几句。这个项目把讲述、提问和回应提前准备好，方便反复读。
 
-三个内置伙伴的插画、矢量动画和 3D 造型由我原创，并在这里以 MIT 许可开源，方便大家使用、修改与分享。[角色介绍和自定义指南](docs/custom-companions.md)。
+我观察过 5 位 2–4 岁的孩子使用这个体验。他们主要看着纸质书，角色似乎让他们更愿意继续参与。这只是小范围观察，还不能说明它能提升语言能力。[为什么做这个项目](docs/why-read-for-xixi.md)。
+
+三个猫咪的插画、动画和 3D 造型都是我做的，随代码一起按 MIT 许可开放。你可以修改、使用和分享，保留版权和许可说明即可。[角色介绍](docs/custom-companions.md)。
 
 ## 把自己的书页照片变成共读体验
 
