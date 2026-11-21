@@ -8,18 +8,18 @@ Open Settings (☰), then choose the reading companion:
 
 | Companion | Appearance and behaviour | Best starting point |
 |---|---|---|
-| Mimi · 3D | My original warm cream-coloured cat, rounded toy-like geometry, a held book, blinking, breathing and speaking motion. | The default companion; use the glasses selector for none, black frames or blue goggles. |
-| White cat · Animated 2D | My original soft white cat, pink ears, gentle green eyes and lavender book. Separate eyes, pupils, ears and small speaking mouth form its vector rig. | A quieter illustrated option; selected via White cat / 白猫 · 动画 2D. |
-| Mimi · 2D | My original grey/taupe illustrated cat with a smiling muzzle, reading book and reusable story props. | The classic vector look; select Mimi · 2D / 原版 2D. |
+| Mimi · 3D | A cream-coloured cat with rounded shapes, a held book, blinking, breathing and speaking motion. | The default companion; use the glasses selector for none, black frames or blue goggles. |
+| White cat · Animated 2D | A white cat with pink ears, green eyes and a lavender book. Its eyes, ears and small mouth animate separately. | A quieter illustrated option; selected via White cat / 白猫 · 动画 2D. |
+| Mimi · 2D | The classic grey/taupe cat with a smiling muzzle, reading book and story props. | The classic vector look; select Mimi · 2D / 原版 2D. |
 | Your imported animal | A data-only vector design made from your child's preferences; the app adds blink, breathing, subtle ear motion and speaking mouth. | Reuse the white cat, or explicitly request a different animal. |
 
-I created the bundled Mimi, white-cat and 3D artwork myself and am releasing the artwork, rigs and code as open source under MIT. MIT is the permission I give others to use, modify and share these original works; it does not identify them as someone else's assets. The SVG companions use my own 2D animation, not the proprietary Cubism runtime. The existing hosted family app may also list older experimental/third-party companions; those are separate from the three original companions in the open-source package.
+I made these three cats and included their art, rigs and code under MIT. You can use, change and share them while keeping the copyright and license notice. The white and classic 2D cats use SVG animation. The hosted app also has a separate Tororo option from Live2D; its terms are linked below.
 
 ## Use the existing white cat
 
 Choose Settings → **White cat · Animated 2D / 白猫 · 动画 2D**. The artwork and rig are already included: [WhiteCatArtwork.tsx](../app/WhiteCatArtwork.tsx), [AnimatedWhiteCat.tsx](../app/AnimatedWhiteCat.tsx), [whiteCatRig.ts](../app/whiteCatRig.ts). Use [the reuse prompt](../prompts/reading-avatar.md) to ask an assistant to select/reuse this exact character, with no redesign or new illustration.
 
-For the separate Live2D Cubism sample, see [Tororo & Hijiki](https://www.live2d.com/en/learn/sample/tororo-hijiki/). Tororo is the white cat. This is Live2D's free sample data under its [sample terms](https://www.live2d.com/en/learn/sample/model-terms/), not my MIT/open-source artwork. The hosted app has a separate legacy Tororo option; the open-source default white cat is my own SVG rig.
+For the separate Live2D Cubism sample, see [Tororo & Hijiki](https://www.live2d.com/en/learn/sample/tororo-hijiki/). Tororo is the white cat. Live2D distributes it under its [sample terms](https://www.live2d.com/en/learn/sample/model-terms/). The hosted app has a separate legacy Tororo option; the open-source default white cat is my own SVG rig.
 
 ## Make your own
 
