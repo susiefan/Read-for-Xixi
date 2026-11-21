@@ -1,8 +1,8 @@
 # Publication scope and credits
 
-## Published under MIT
+## Original work created here and released as open source
 
-Read for Xixi source code, original SVG Mimi and white-cat artwork, original Three.js companion geometry, authoring/evaluation rules, schemas, tests and documentation are copyright 2026 Susie Fan. See LICENSE. The SVG cats are custom animated artwork, not Live2D Cubism models.
+We created the original SVG Mimi, white cat, procedural Three.js cat for Read for Xixi. We are releasing their artwork, rigs, geometry and the project source/tools/docs as open source under the MIT license (copyright 2026 Susie Fan; see LICENSE). MIT names the permission granted for these original works; it does not imply they came from a third-party art library. The SVG cats are custom animated artwork, not Live2D Cubism models.
 
 ## Existing local library: not distributed
 
@@ -19,8 +19,16 @@ The versioned Mimi instruction profile is included as configuration, not a refer
 
 Follow upstream installation and model terms for your own environment. Neither model weights nor the engine's packaged prompt WAV are redistributed.
 
+## Parent-created avatars
+
+A caregiver controls the license of an avatar they create/import. It is not automatically published or MIT merely because the tool is open source. Imports stay in that browser. The bundled original cats are explicitly MIT.
+
 ## Dependencies
 
 React / React DOM and Three.js: MIT. Vite and TypeScript: MIT. resvg-js: MPL 2.0. Pillow: HPND. pypdfium2 / PDFium: licenses documented upstream. jsonschema: MIT. Dependency packages are installed separately; retain their own license notices when redistributing builds.
 
 Research notes inherited from the early public prototype are background material, not product validation or permission to republish books cited in those notes.
+
+## Explicitly contributed editorial feedback
+
+The owner authorized publishing the 207 saved human editorial review records in evals/contributions/maintainer-feedback-v1.json under the project MIT contribution terms. These are scores and redacted comments with limited page/version metadata, not book content, family recordings or child-level research data. See that folder’s provenance and limitations. Other parents’ feedback remains local unless they explicitly approve the exact contribution.

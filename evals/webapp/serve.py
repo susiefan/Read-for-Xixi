@@ -100,6 +100,17 @@ def revision_of(value):
     return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
 
 
+def visual_revision_of(value):
+    # URLs include review-version routing, which is not a visual change.
+    def content(item):
+        if isinstance(item, dict):
+            return {key: content(v) for key, v in item.items() if key not in ("url", "qualityAttempts", "reused")}
+        if isinstance(item, list):
+            return [content(v) for v in item]
+        return item
+    return revision_of(content(value))
+
+
 class ReviewLibrary:
     def __init__(self, root, ratings, source_dirs, production_dir=PRODUCTION_DIR):
         self.root = root
@@ -115,6 +126,8 @@ class ReviewLibrary:
         for book in read_json(queue)["books"]:
             folder = self.production_dir / book["draft"]
             audio_status = folder / "status.json"
+            parent_audio = ROOT / "data/local/books" / book["draft"] / "audio/status.json"
+            if parent_audio.is_file(): audio_status = parent_audio
             audio = read_json(audio_status) if audio_status.is_file() else {}
             status.append({**book,
                            "checked": (folder / "production.json").exists(),
@@ -176,8 +189,9 @@ class ReviewLibrary:
                         "hasScan": key in scans, "evidence": original.get("visibleEvidence"),
                         "activity": original.get("activityText"),
                         "reviewVisuals": preview,
-                        "scriptRevision": revision_of([page.get(field) for field in ("label", "story", "invitation", "response")]),
-                        "visualRevision": revision_of(preview) if preview else None,
+                        "scriptRevision": revision_of([page.get(field) for field in ("label", "story", "invitation", "response", "narration")]),
+                        "visualRevision": visual_revision_of(preview) if preview else None,
+                        "legacyVisualRevision": revision_of(preview) if preview else None,
                         "scriptNotes": notes.get(page["pageId"], []),
                     })
                 book["title"] = draft["title"]
@@ -194,12 +208,39 @@ class ReviewLibrary:
         ratings = {(row[0], row[1]): dict(score=row[2], comment=row[3], updatedAt=row[4]) for row in rows}
         dimensions = {(key, kind, revision): dict(score=score, comment=comment, updatedAt=updated)
                       for key, kind, revision, score, comment, updated in split}
+        # Preserve a legacy visual grade only when its complete old preview hash
+        # still matches; then alias to the content-only hash without inventing a review.
+        for book in books:
+            for version in book["versions"]:
+                for page in version["pages"]:
+                    legacy = dimensions.get((page["key"], "visual", page["legacyVisualRevision"]))
+                    if legacy and (page["key"], "visual", page["visualRevision"]) not in dimensions:
+                        dimensions[(page["key"], "visual", page["visualRevision"])] = {**legacy, "legacyHashVerified": True}
+
+        def dimension_review(page_key, kind, revision):
+            exact = dimensions.get((page_key, kind, revision))
+            if exact is not None:
+                return exact
+            batch, book, version, page = page_key.split("/")
+            current_version = int(version[1:])
+            candidates = []
+            for (old_key, old_kind, old_revision), review in dimensions.items():
+                old_parts = old_key.split("/")
+                if (len(old_parts) == 4 and old_kind == kind and old_revision == revision
+                    and old_parts[:2] == [batch, book] and old_parts[3] == page
+                    and VERSION.fullmatch(old_parts[2] + ".json") and int(old_parts[2][1:]) < current_version):
+                    candidates.append((int(old_parts[2][1:]), review["updatedAt"], old_key, review))
+            if not candidates:
+                return None
+            _, _, source_key, review = max(candidates)
+            return {**review, "inheritedFrom": source_key}
+
         for book in books:
             for version in book["versions"]:
                 for page in version["pages"]:
                     page["legacyReview"] = ratings.get((page["key"], page["revision"]))
-                    page["review"] = dimensions.get((page["key"], "script", page["scriptRevision"]))
-                    page["visualReview"] = dimensions.get((page["key"], "visual", page["visualRevision"]))
+                    page["review"] = dimension_review(page["key"], "script", page["scriptRevision"])
+                    page["visualReview"] = dimension_review(page["key"], "visual", page["visualRevision"])
         return {"books": books, "blocked": blocked, "passScore": PASS_SCORE}
 
     @contextmanager

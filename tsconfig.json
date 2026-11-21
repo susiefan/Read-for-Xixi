@@ -1,9 +1,28 @@
 {
   "compilerOptions": {
-    "target": "ES2022", "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true, "esModuleInterop": true, "strict": true,
-    "module": "ESNext", "moduleResolution": "Bundler", "resolveJsonModule": true,
-    "isolatedModules": true, "noEmit": true, "jsx": "react-jsx", "types": ["node"]
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": [
+      "node"
+    ]
   },
-  "include": ["web/main.tsx", "tests/*.ts", "vite.config.ts"]
+  "include": [
+    "web/main.tsx",
+    "tests/*.ts",
+    "vite.config.ts",
+    "scripts/validate_avatar.ts"
+  ]
 }

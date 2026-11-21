@@ -21,7 +21,7 @@ def audit(root=ROOT):
   if KEY.search(data):findings.append({'path':name,'reason':'credential-like content'})
   if len(data)>25_000_000:findings.append({'path':name,'reason':'large binary needs explicit publication review'})
   manifest.append({'path':name,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
- report={'status':'pass' if not findings else 'fail','findings':findings,'fileCount':len(manifest),'files':manifest,'scope':'Git eligible files only; local books and human feedback excluded'}
+ report={'status':'pass' if not findings else 'fail','findings':findings,'fileCount':len(manifest),'files':manifest,'scope':'Git eligible files only; local books and unconsented private feedback excluded'}
  return report
 if __name__=='__main__':
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path);a=p.parse_args();r=audit()

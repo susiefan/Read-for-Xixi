@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import AnimatedWhiteCat from "./AnimatedWhiteCat";
+import CustomReadingAvatar from "./CustomReadingAvatar";
+import AvatarImporter, { useAvatarLibrary } from "./AvatarImporter";
 import Live2DMimi from "./Live2DMimi";
 import Live3DMimi from "./Live3DMimi";
 import ReadingSceneLayer from "./ReadingSceneLayer";
@@ -12,6 +14,7 @@ import "./openReader.css";
 
 type OpenBook = StoryBook & {
   cover: string;
+  preferredCompanion?: string;
   localized: Record<string, { title: string; description: string }>;
   license: { source: string; url: string; creators: string[] };
   pages: (StoryBook["pages"][number] & { image: string; narration: Record<string,string>; audioTracks?: Record<string,string> })[];
@@ -25,6 +28,7 @@ function save(key:string,value:string) { try { localStorage.setItem(key,value); 
 
 export default function OpenReader() {
   const [lang,setLang] = useState<"zh"|"en">(()=>saved("xixi-open-language","zh")==="en"?"en":"zh");
+  const avatarLibrary=useAvatarLibrary();
   const [cat,setCat] = useState(()=>saved("xixi-open-cat","3d"));
   const [glasses,setGlasses] = useState<"none"|"black"|"blue">("none");
   const [books,setBooks] = useState<OpenBook[]>([]), [error,setError] = useState("");
@@ -35,6 +39,8 @@ export default function OpenReader() {
   const audio = useRef<HTMLAudioElement|null>(null), generation = useRef(0);
   const context = useRef<AudioContext|null>(null), analyser = useRef<AnalyserNode|null>(null);
   const book=books[selected], spread=book?.pages[page], t=copy[lang];
+  const customAvatar=avatarLibrary.avatars.find(a=>cat===`custom:${a.id}`);
+  useEffect(()=>{if(cat.startsWith("custom:")&&!customAvatar){setCat("3d");save("xixi-open-cat","3d");}},[cat,customAvatar]);
   const stop=()=>{ generation.current++; if(audio.current) { audio.current.pause(); audio.current.onended=null; } audio.current=null; setSpeaking(false); setPaused(false); };
   const play=(next:Phase,index=page)=>{
     stop(); setError(""); setPhase(next);
@@ -74,16 +80,16 @@ export default function OpenReader() {
     return()=>window.clearTimeout(timer);
   },[autoplay,reading,paused,error,phase,page,selected]);
   const sample=()=>{if(!analyser.current)return null;const values=new Uint8Array(analyser.current.frequencyBinCount);analyser.current.getByteTimeDomainData(values);return Math.min(1,Math.sqrt(values.reduce((s,n)=>s+((n-128)/128)**2,0)/values.length)*5);};
-  const begin=()=>{setPage(0);setReading(true);setFinished(false);play("story",0);};
+  const begin=()=>{if(book.preferredCompanion){setCat(book.preferredCompanion);save("xixi-open-cat",book.preferredCompanion);}setPage(0);setReading(true);setFinished(false);play("story",0);};
   const pause=()=>{if(!audio.current)return;if(paused){void context.current?.resume();void audio.current.play().then(()=>setPaused(false)).catch(()=>setError(t[16]));}else{audio.current.pause();setPaused(true);}};
   const title=book?.localized[lang==="zh"?"zh-CN":"en"].title;
   return <InterfaceLanguageProvider language={lang==="zh"?"zh-CN":"en"}><div className="open-reader">
     <header><a href="#" onClick={e=>{e.preventDefault();stop();setReading(false);setFinished(false);}}>Read for Xixi</a><div className="header-actions"><span className="stars" aria-label={`${t[4]} ${stars}`}>★ <b>{stars}</b></span><button onClick={()=>{const value=lang==="zh"?"en":"zh";setLang(value);save("xixi-open-language",value);}}>{lang==="zh"?"English":"中文"}</button><button aria-expanded={settings} onClick={()=>setSettings(!settings)} aria-label={t[3]}>☰</button></div></header>
-    {settings&&<section className="settings" aria-label={t[3]}><label>{lang==="zh"?"猫咪样式":"Companion"}<select value={cat} onChange={e=>{setCat(e.target.value);save("xixi-open-cat",e.target.value);}}><option value="3d">Mimi · 3D</option><option value="white-2d">{lang==="zh"?"白猫 · 动画 2D":"White cat · Animated 2D"}</option><option value="2d">Mimi · 2D</option></select></label><label>{lang==="zh"?"眼镜":"Glasses"}<select value={glasses} onChange={e=>setGlasses(e.target.value as typeof glasses)}><option value="none">{lang==="zh"?"无眼镜":"None"}</option><option value="black">{lang==="zh"?"黑框眼镜":"Black frames"}</option><option value="blue">{lang==="zh"?"蓝色护目镜":"Blue goggles"}</option></select></label></section>}
+    {settings&&<section className="settings" aria-label={t[3]}><label>{lang==="zh"?"阅读伙伴":"Companion"}<select value={cat} onChange={e=>{setCat(e.target.value);save("xixi-open-cat",e.target.value);}}><option value="3d">Mimi · 3D</option><option value="white-2d">{lang==="zh"?"白猫 · 动画 2D":"White cat · Animated 2D"}</option><option value="2d">Mimi · 2D</option>{avatarLibrary.avatars.map(a=><option key={a.id} value={`custom:${a.id}`}>{a.name}</option>)}</select></label><label>{lang==="zh"?"眼镜":"Glasses"}<select value={glasses} onChange={e=>setGlasses(e.target.value as typeof glasses)}><option value="none">{lang==="zh"?"无眼镜":"None"}</option><option value="black">{lang==="zh"?"黑框眼镜":"Black frames"}</option><option value="blue">{lang==="zh"?"蓝色护目镜":"Blue goggles"}</option></select></label><AvatarImporter library={avatarLibrary} selectedId={customAvatar?.id} language={lang} onSelect={id=>{setCat(`custom:${id}`);save("xixi-open-cat",`custom:${id}`);}} onRemoved={()=>{setCat("3d");save("xixi-open-cat","3d");}}/></section>}
     <main>
       <section className="companion" aria-label={t[17]}>
         <div className="cat-stage">
-          {cat==="3d"?<Live3DMimi mood={speaking?"speaking":"resting"} speaking={speaking} glasses={glasses} scene="reading-nook" props={[]} sampleAudio={sample} readingSession={reading} readingScene={reading?spread?.readingScene:undefined}/>:cat==="white-2d"?<AnimatedWhiteCat mood={speaking?"speaking":"resting"} speaking={speaking} page={page} setting="study" glasses={glasses} sampleAudio={sample} reading={reading} scene={reading?spread?.readingScene:undefined}/>:<>{reading&&spread?.readingScene&&<ReadingSceneLayer scene={spread.readingScene} depth="behind"/>}<Live2DMimi mood={speaking?"speaking":"resting"} speaking={speaking} page={page} setting="study" glasses={glasses} catOnly={reading&&Boolean(spread?.readingScene)}/>{reading&&spread?.readingScene&&<ReadingSceneLayer scene={spread.readingScene} depth="front"/>}</>}
+          {customAvatar?<CustomReadingAvatar avatar={customAvatar} speaking={speaking} sampleAudio={sample} scene={reading?spread?.readingScene:undefined}/>:cat==="3d"?<Live3DMimi mood={speaking?"speaking":"resting"} speaking={speaking} glasses={glasses} scene="reading-nook" props={[]} sampleAudio={sample} readingSession={reading} readingScene={reading?spread?.readingScene:undefined}/>:cat==="white-2d"?<AnimatedWhiteCat mood={speaking?"speaking":"resting"} speaking={speaking} page={page} setting="study" glasses={glasses} sampleAudio={sample} reading={reading} scene={reading?spread?.readingScene:undefined}/>:<>{reading&&spread?.readingScene&&<ReadingSceneLayer scene={spread.readingScene} depth="behind"/>}<Live2DMimi mood={speaking?"speaking":"resting"} speaking={speaking} page={page} setting="study" glasses={glasses} catOnly={reading&&Boolean(spread?.readingScene)}/>{reading&&spread?.readingScene&&<ReadingSceneLayer scene={spread.readingScene} depth="front"/>}</>}
         </div>
       </section>
       <section className="reader-panel">

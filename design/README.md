@@ -22,3 +22,7 @@ flowchart LR
 - [数据、隐私和发布边界](data-and-deployment.md)
 
 本地复制既有书不会调用模型。付费 API 仅由显式运行离线 regenerate_page.py 发起，密钥只从服务端环境读取。机器检查不等于儿童测试或学习效果证据。
+
+自定义角色：`prompts/reading-avatar.md` / `skills/create-reading-avatar` → 本地 JSON → `readingAvatar.ts` 校验 → 设置导入 → `CustomReadingAvatar.tsx` 动画。见 [使用指南](../docs/custom-companions.md)与[项目动机](../docs/why-read-for-xixi.md)。
+
+家长书页照片的完整流程见 [photo-book-workflow](../docs/photo-book-workflow.md)。新增 parent review 门：当前页脚本/译文、视觉哈希都须获家长通过后才启动最终配音。评测贡献为独立、可拒绝、按实际内容哈希授权的 GitHub PR，不是制作书籍的前提。
