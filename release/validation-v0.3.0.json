@@ -33,5 +33,14 @@
     "Founder-reported n=5 ages 2–4 observations are qualitative, not efficacy validation",
     "HTTP GET verification can be blocked by site anti-bot protection; native Sites deployment is verified"
   ],
-  "publicationScope": "Code, original cats, skills/prompts, judge, schemas and explicitly consented redacted editorial reviews; no book packages, scans, audio, child profiles or new elephant example"
+  "publicationScope": "Code, original cats, skills/prompts, judge, schemas and explicitly consented redacted editorial reviews; no book packages, scans, audio, child profiles or new elephant example",
+  "githubCI": {
+    "commit": "3eca180e3045c46974ac8684538496714a39dd28",
+    "status": "success",
+    "url": "https://github.com/susiefan/Read-for-Xixi/actions/runs/44854600015"
+  },
+  "release": {
+    "url": "https://github.com/susiefan/Read-for-Xixi/releases/tag/v0.3.0",
+    "publishedAt": "2026-11-21T02:14:31Z"
+  }
 }
