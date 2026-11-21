@@ -1,0 +1,4 @@
+interface:
+  display_name: "Set up an interactive picture book"
+  short_description: "Turn ordered book photos into a reviewed reading experience"
+  default_prompt: "Use $setup-picture-book with my folder of book photos; ask for my child’s nickname, age and preferred companion first."

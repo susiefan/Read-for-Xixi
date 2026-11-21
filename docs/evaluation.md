@@ -2,7 +2,7 @@
 
 评测工具绑定 127.0.0.1，默认端口 4327。原始书页、脚本和 SVG 合成放在左边，评分和文字反馈放在右边。脚本 1–7 分，4 分通过；视觉通过或不通过。只有一个「保存并下一页」。视觉预选通过只是减少点击，不会自动创建评分。
 
-每条评分绑定内容哈希。改动视觉不会使原脚本分数失效；脚本改动不会借用旧的脚本评分。旧评分和评语仍保存在 SQLite，反馈归档写到 data/local/script-eval-feedback/；review_loop.py 另写一份 data/local/eval-feedback/ 时间戳 Markdown。
+每条评分绑定内容哈希。改动视觉不会使原脚本分数失效；脚本改动不会借用旧的脚本评分。内容哈希完全相同的分项可沿用前一版人评并注明来源；发生变化的分项须重新评。旧评分和评语仍保存在 SQLite，反馈归档写到 data/local/script-eval-feedback/；review_loop.py 另写一份 data/local/eval-feedback/ 时间戳 Markdown。
 
 `python scripts/review_loop.py` 读取真实已保存的评分，产出 data/local/revision-plan.json：
 
@@ -21,3 +21,7 @@
 公开测试验证原文锁、书包完整性、安全导入、反馈维度隔离和合理建议不阻断。它们是合成的结构测试，不是新的演示绘本，也不是历史真人评分。现有两本书的实际检查通过 check_existing_library.py 在本地运行。
 
 不要把机器结构检查称为真人评分、儿童测试或疗效证据。100 条带来源的评测基准尚未完成。
+
+## Complete photo-book workflow and contributed feedback
+
+The setup skill and photo_book_workflow.py add an explicit parent-review gate before final audio. The current script/translation and actual visual hashes must match saved passing parent grades. The owner-authorized historical dataset (207 saved records) is public in evals/contributions; other feedback remains local unless the parent approves an exact redacted payload. prompts/interaction-judge.md and scripts/llm_judge.py implement the shared judge rubric distilled from these reviews. See photo-book-workflow.md.

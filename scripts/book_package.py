@@ -58,10 +58,9 @@ def validate(folder, require_audio=False, allow_draft=False):
         if p['visualPlan']['sourcePageId']!=p['pageId']: raise ValueError('Visual source page mismatch')
         check_svg(safe_file(folder,'assets/'+p['pageId']+'.svg'))
         if require_audio:
-            import wave
+            from check_existing_library import wav_duration
             for kind in ('story','invitation','response'):
-                with wave.open(str(folder/'audio'/f'spread-{pages.index(p)+1}-{kind}.wav'),'rb') as audio:
-                    if audio.getnframes()/audio.getframerate()<.15: raise ValueError('Empty/short WAV')
+                wav_duration(folder/'audio'/f'spread-{pages.index(p)+1}-{kind}.wav')
     return {'id':book['id'],'pages':len(pages),'audioRequired':require_audio,'status':'pass'}
 
 def export(folder, output):

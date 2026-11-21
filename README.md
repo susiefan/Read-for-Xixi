@@ -4,6 +4,26 @@
 
 An open shared-reading toolkit: animated reading companions, image-grounded authoring rules, revision-aware evaluation, local library import and portable book packages.
 
+**在线体验：[storyforxixi.susiefan.com](https://storyforxixi.susiefan.com/)**
+
+我们想减轻家长反复朗读、跨语言讲述和临场想互动问题的负担，让普通纸质书也有可参与的共读体验。角色提供陪伴，邀请把注意力带回实体书。项目创建者对 5 位 2–4 岁儿童的早期观察中，孩子主要关注书本，角色似乎帮助维持参与；这是定性观察，不是效果验证。[问题、方案与研究依据](docs/why-read-for-xixi.md)。
+
+三个内置伙伴的插画、矢量动画和 3D 造型由我们原创，并在这里以 MIT 许可开源，方便大家使用、修改与分享。[角色介绍和自定义指南](docs/custom-companions.md)。
+
+## 把自己的书页照片变成共读体验
+
+安装 [setup-picture-book skill](skills/setup-picture-book)，或复制[完整家长工作流 prompt](prompts/photo-book-workflow.md)，提供书页照片文件夹。助手先询问孩子称呼、年龄和伙伴偏好，然后生成脚本与透明视觉素材，打开评测 WebApp。你给脚本 1–7 分、视觉通过/不通过并留言；修订通过后才开始最终配音并安装到本地阅读器。
+
+可选的评测贡献会先显示脱敏后的实际文件，**经家长明确同意**才提交 GitHub PR；拒绝不影响制作和使用。维护者已授权公开的 [207 条历史评分与评语](evals/contributions)已包含在仓库，并用于整理 [LLM judge 评审标准](prompts/interaction-judge.md)。[完整操作指南](docs/photo-book-workflow.md)。
+
+## 按孩子喜好制作伙伴
+
+设置 → **导入伙伴**，选择一个 `.avatar.json` 文件。默认可直接选择已有[原创白猫](app/WhiteCatArtwork.tsx)，也可以把[白猫复用与自定义 prompt](prompts/reading-avatar.md)交给助手，或安装 [create-reading-avatar skill](skills/create-reading-avatar)。角色保存在当前浏览器，支持最多六个；现有故事和声音继续使用。
+
+```bash
+pnpm avatar:validate my-companion.avatar.json --preview preview.svg
+```
+
 ## 运行 / Quick start
 
 需要 Node.js 22.12+、pnpm 11.25.0、Python 3.11+。
@@ -39,7 +59,7 @@ python scripts/check_existing_library.py
 
 - 默认中文界面，可切换英文；书名与简介有独立界面翻译，正文不被界面切换改写。
 - 按钮翻页、重听、暂停、自动播放。每页讲述后必须有一个邀请，家长可点击「让 Mimi 回应」。
-- 设置提供原创 3D Mimi、原创动画白猫和原版 2D Mimi，以及三种眼镜。2D 使用 SVG 动画，并非 Cubism 模型。
+- 设置提供原创 3D Mimi、原创动画白猫和原版 2D Mimi，以及三种眼镜。还可导入按孩子偏好制作的动物伙伴。2D 使用 SVG 动画，并非 Cubism 模型。
 - 阅读中不跟随鼠标；换页时猫咪不重新挂载，背景淡入。故事星在顶部累计，存于当前浏览器。
 - 当前版本不使用麦克风、摄像头、语音控制、儿童录音或遥测。已有配音通过浏览器播放。
 
@@ -52,7 +72,7 @@ python evals/webapp/serve.py
 - http://127.0.0.1:4327/ ：左侧原图、脚本、SVG 合成；右侧脚本 1–7 分、视觉通过/不通过和评语，共用「保存并下一页」。
 - http://127.0.0.1:4327/open-source ：需求、待办、验证证据、用户待办和历史，可手动或自动刷新。
 - 评分绑定内容哈希。脚本 4 分通过；通过维度保留，只重做失败维度。未评审保持 pending。
-- SQLite 和独立 Markdown 反馈只存本地。仓库不发布私人历史评分，不虚构人评或儿童研究结果。
+- SQLite 和独立 Markdown 反馈只存本地。私人历史评分默认留在本地；仅经明确授权的脱敏贡献集公开，不虚构人评或儿童研究结果。
 
 ```bash
 python scripts/review_loop.py

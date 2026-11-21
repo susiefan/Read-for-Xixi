@@ -1,6 +1,6 @@
 {
   "name": "read-for-xixi",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -14,7 +14,8 @@
     "test": "tsx --test tests/*.test.ts",
     "eval": "python3 evals/webapp/serve.py",
     "check:release": "python3 scripts/audit_release.py",
-    "check:library": "python3 scripts/check_existing_library.py"
+    "check:library": "python3 scripts/check_existing_library.py",
+    "avatar:validate": "node --import tsx scripts/validate_avatar.ts"
   },
   "dependencies": {
     "react": "19.2.6",
