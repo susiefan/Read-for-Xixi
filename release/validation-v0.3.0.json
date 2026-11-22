@@ -41,7 +41,8 @@
   },
   "release": {
     "url": "https://github.com/susiefan/Read-for-Xixi/releases/tag/v0.3.0",
-    "publishedAt": "2026-11-21T02:14:31Z"
+    "publishedAt": "2026-11-22T03:59:26Z",
+    "originalPublishedAt": "2026-11-21T02:14:31Z"
   },
   "sourceCommit": "7e00853b87ae9f8f0c523d6af6a5676edaef29c3",
   "revalidatedAt": "2026-11-21T22:58:37.050343-05:00",
@@ -51,6 +52,9 @@
   },
   "repositoryRebuild": {
     "independentRepository": true,
-    "oldPullRequestReferencesImported": false
+    "oldPullRequestReferencesImported": false,
+    "originalRepositoryDeleted": true,
+    "publicUrlRestored": true,
+    "completedAt": "2026-11-21T23:04:29.071502-05:00"
   }
 }

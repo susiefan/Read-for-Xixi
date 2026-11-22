@@ -2,7 +2,7 @@
   "version": 1,
   "goal": "发布可复用的家长照片制书工作流、白猫复用/自定义角色、家长评测后配音及经授权的脱敏评测贡献。",
   "repository": "https://github.com/susiefan/Read-for-Xixi",
-  "updatedAt": "2026-11-21T22:58:37.050343-05:00",
+  "updatedAt": "2026-11-21T23:04:29.071502-05:00",
   "requirements": [
     {
       "title": "可复现安装",
@@ -311,15 +311,15 @@
     {
       "id": "independent-repository",
       "title": "迁移到独立的干净仓库",
-      "status": "active",
-      "note": "源码、两个版本标签及新 CI 已核对；正在恢复两个 Release 和八个附件，随后替换旧仓库并恢复原地址。",
+      "status": "done",
+      "note": "独立仓库已验证并恢复原地址；旧仓库已删除。两个版本、八个附件及新 CI 齐全，旧 PR 引用未迁入，原始与重建版本均保留本地备份。",
       "acceptance": "新仓库没有旧 PR 引用，两个版本及八个附件齐全，CI 通过，本地备份可恢复。",
       "evidence": [
         "https://github.com/susiefan/Read-for-Xixi/actions/runs/44982767644",
         "https://github.com/susiefan/Read-for-Xixi/actions/runs/44982769087"
       ],
       "release": "maintenance",
-      "updatedAt": "2026-11-21T22:58:37.050343-05:00"
+      "updatedAt": "2026-11-21T23:04:29.071502-05:00"
     }
   ],
   "history": [
@@ -418,6 +418,12 @@
       "task": "独立仓库迁移",
       "status": "active",
       "note": "原始仓库已完整备份；两个版本已在独立仓库重新通过 CI。"
+    },
+    {
+      "at": "2026-11-21T23:04:29.071502-05:00",
+      "task": "独立仓库迁移完成",
+      "status": "done",
+      "note": "旧仓库删除后，新仓库已恢复 Read-for-Xixi 名称；主分支和两个版本均通过新 CI。"
     }
   ]
 }
