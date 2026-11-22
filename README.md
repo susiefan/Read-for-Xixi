@@ -218,7 +218,7 @@ pnpm build
 pnpm check:release
 ```
 
-The v0.3.0 release passed 25 automated tests, TypeScript typechecking, Python compilation, SVG/JSON checks, skill validation, the production build and [GitHub CI](https://github.com/susiefan/Read-for-Xixi/actions/runs/44854600015). Workflow tests used local fixtures and mocked model responses. I didn't run a new parent book through paid generation and final TTS for that release.
+The v0.3.0 release passed 25 automated tests, TypeScript typechecking, Python compilation, SVG/JSON checks, skill validation, the production build and [GitHub CI](https://github.com/susiefan/Read-for-Xixi/actions/runs/44982769087). Workflow tests used local fixtures and mocked model responses. I didn't run a new parent book through paid generation and final TTS for that release.
 
 The source reader does not include voice control, automatic page recognition, live speech understanding, child assessment, cloud sync or a native iPhone installer. The 100-case benchmark and Bloom/H5P integration are still planned.
 

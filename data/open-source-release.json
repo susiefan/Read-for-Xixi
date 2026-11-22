@@ -2,7 +2,7 @@
   "version": 1,
   "goal": "发布可复用的家长照片制书工作流、白猫复用/自定义角色、家长评测后配音及经授权的脱敏评测贡献。",
   "repository": "https://github.com/susiefan/Read-for-Xixi",
-  "updatedAt": "2026-11-21T02:16:25.561057+00:00",
+  "updatedAt": "2026-11-21T22:58:37.050343-05:00",
   "requirements": [
     {
       "title": "可复现安装",
@@ -226,7 +226,7 @@
       "acceptance": "公开源码、版本标签、Release 和下载包均可访问。",
       "evidence": [
         "https://github.com/susiefan/Read-for-Xixi/releases/tag/v0.2.0",
-        "https://github.com/susiefan/Read-for-Xixi/actions/runs/44673925689"
+        "https://github.com/susiefan/Read-for-Xixi/actions/runs/44982767644"
       ],
       "release": "first",
       "updatedAt": "2026-11-20T04:23:51.884420+00:00"
@@ -302,11 +302,24 @@
       "acceptance": "代码/文档/测试和发布证据齐全",
       "evidence": [
         "https://github.com/susiefan/Read-for-Xixi/releases/tag/v0.3.0",
-        "https://github.com/susiefan/Read-for-Xixi/actions/runs/44854600015",
+        "https://github.com/susiefan/Read-for-Xixi/actions/runs/44982769087",
         "https://storyforxixi.susiefan.com/"
       ],
       "release": "v0.3",
       "updatedAt": "2026-11-21T02:16:25.561057+00:00"
+    },
+    {
+      "id": "independent-repository",
+      "title": "迁移到独立的干净仓库",
+      "status": "active",
+      "note": "源码、两个版本标签及新 CI 已核对；正在恢复两个 Release 和八个附件，随后替换旧仓库并恢复原地址。",
+      "acceptance": "新仓库没有旧 PR 引用，两个版本及八个附件齐全，CI 通过，本地备份可恢复。",
+      "evidence": [
+        "https://github.com/susiefan/Read-for-Xixi/actions/runs/44982767644",
+        "https://github.com/susiefan/Read-for-Xixi/actions/runs/44982769087"
+      ],
+      "release": "maintenance",
+      "updatedAt": "2026-11-21T22:58:37.050343-05:00"
     }
   ],
   "history": [
@@ -399,6 +412,12 @@
       "task": "v0.3.0 完整家长工作流发布完成",
       "status": "done",
       "note": "两份 skill、家长工作流/白猫 prompt、共享 LLM rubric、207 条已授权评测与25项测试已发布；保留既有白猫和书库。"
+    },
+    {
+      "at": "2026-11-21T22:58:37.050343-05:00",
+      "task": "独立仓库迁移",
+      "status": "active",
+      "note": "原始仓库已完整备份；两个版本已在独立仓库重新通过 CI。"
     }
   ]
 }
